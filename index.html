@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YPPhotography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great Vibes">
+
+    <style>
+        /* General Styles */
+        body {
+            background-color: #000010;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 2;
+            color: #000000;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3.5rem;
+            position: absolute;
+            top: 0;
+            width: 92%;
+            z-index: 10;
+            color: #fff;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5rem;
+            font-size: 1.7rem;
+        }
+
+        .instagram-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            max-height: 160vh;
+            position: relative;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: fill;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: "Great Vibes", cursive;
+            font-size: 4rem;
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Projects Grid */
+        .projects {
+            padding: 2rem 4rem;
+            background-color: #181818;
+            text-align: center;
+        }
+
+        .projects h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(750px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 0rem;
+        }
+        
+        .project-card .slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card .slider-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card .slider-images img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">YPPhotography</div>
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="Portfolio.html">Portfolio</a></li>
+                <li><a href="https://instagram.com/yannpeillat/"><img src="instagram-logo.png" alt="Instagram" class="instagram-icon"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Slider -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide">
+                <img src="Q:\Selection\Site\Slides/DSC_6063.jpg" alt="Background 1">
+                <div class="overlay-text">Une mosaique de moments<br> Yann Peillat</div>
+            </div>
+            
+            <div class="hero-slide">
+                <img src="Q:\Selection\Site\Slides/DSC_1841.jpg" alt="Background 2">
+                <div class="overlay-text">Une mosaique de moments<br> Yann Peillat</div>
+
+            </div>
+            
+            <div class="hero-slide">
+                <img src="Q:\Selection\Site\Slides/DSC_4954.jpg" alt="Background 3">
+                <div class="overlay-text">Une mosaique de moments<br> Yann Peillat</div>
+
+            </div>
+                       
+            <div class="hero-slide">
+                <img src="Q:\Selection\Site\Slides/_DSC3842.JPG" alt="Background 4">
+                <div class="overlay-text">Une mosaique de moments<br> Yann Peillat</div>
+
+            </div>
+            
+            <div class="hero-slide">
+                <img src="Q:\Selection\Site\Slides/_DSC4679.JPG" alt="Background 5">
+                <div class="overlay-text">Une mosaique de moments<br> Yann Peillat</div>
+
+            </div>
+            
+            <div class="hero-slide">
+                <img src="Q:\Selection\Site\Slides/_DSC4608.JPG" alt="Background 6">
+                <div class="overlay-text">Une mosaique de moments<br> Yann Peillat</div>
+
+            </div>
+            
+            <div class="hero-slide">
+                <img src="Q:\Selection\Site\Slides/DSC_3907.jpg" alt="Background 7">
+                <div class="overlay-text">Une mosaique de moments<br> Yann Peillat</div>
+
+            </div>
+            <!-- Add more hero slides as needed -->
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects">
+        <h2>Evenements</h2>
+        <div class="grid">
+            <a href="project1.html" class="project-card">
+                <div class="slider">
+                    <div class="slider-images">
+                   	<img src="Q:\Selection\Prepa\GALA 2024/_DSC4883.jpg" alt="Project 1 - Image 1">
+                        <img src="Q:\Selection\Prepa\GALA 2024/_DSC5417.jpg" alt="Project 1 - Image 2">
+                        <img src="Q:\Selection\Prepa\GALA 2024/_DSC4875.jpg" alt="Project 1 - Image 3">
+                    </div>
+
+                </div>
+                <div class="project-info">
+                        <h3>GALA CPP 2024</h3>
+                        <p>20/12/2024</p>
+                </div>
+            </a>
+            <a href="project2.html" class="project-card">
+                <div class="slider">
+                    <div class="slider-images">
+                   	<img src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4316.jpg" alt="Project 2 - Image 1">
+                        <img src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3840.jpg" alt="Project 2 - Image 2">
+                        <img src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4228.jpg" alt="Project 2 - Image 3">
+                    </div>
+
+                </div>
+                <div class="project-info">
+                        <h3>KFET DES ANCIENS CPP 2024</h3>
+                        <p>22/11/2024</p>
+                </div>
+            </a>
+            <a href="project3.html" class="project-card">
+                <div class="slider">
+                    <div class="slider-images">
+                   	<img src="Q:\Selection\Prepa\HALLOWEEN 2024/_DSC2735.jpg" alt="Project 3 - Image 1">
+                        <img src="Q:\Selection\Prepa\HALLOWEEN 2024/_DSC2553.jpg" alt="Project 3 - Image 2">
+                        <img src="Q:\Selection\Prepa\HALLOWEEN 2024/_DSC3012.jpg" alt="Project 3 - Image 3">
+                        <img src="Q:\Selection\Prepa\HALLOWEEN 2024/_DSC2607.jpg" alt="Project 3 - Image 4">
+                    </div>
+
+                </div>
+                <div class="project-info">
+                        <h3>HALLOWEEN CPP 2024</h3>
+                        <p>25/10/2024</p>
+                </div>
+            </a>
+            <a href="project4.html" class="project-card">
+                <div class="slider">
+                    <div class="slider-images">
+                   	<img src="Q:\Selection\Voitures\IMOLA/DSC_4714 (2).jpg" alt="Project 4 - Image 1">
+                        <img src="Q:\Selection\Voitures\IMOLA/DSC_2333.jpg" alt="Project 4 - Image 2">
+                        <img src="Q:\Selection\Voitures\IMOLA/DSC_2043.jpg" alt="Project 4 - Image 3">
+                        <img src="Q:\Selection\Voitures\IMOLA/DSC_6841.jpg" alt="Project 4 - Image 4">
+                    </div>
+
+                </div>
+                <div class="project-info">
+                        <h3>6H D'IMOLA 2024</h3>
+                        <p>21/04/2024</p>
+                </div>
+            </a>
+
+            <!-- Additional project cards as needed -->
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Contact: Yann Peillat | Email: yann.peillat@gmail.com | Phone: +33 (0) 6 41 38 92 80 | <a href="https://instagram.com/yannpeillat/">Instagram</a></p>
+            <p>&copy; 2024 YPPhotography. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hero slider functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            let currentIndex = 0;
+
+            const showSlide = (index) => {
+                heroSlides.forEach((slide, i) => {
+                    slide.style.display = i === index ? 'block' : 'none';
+                });
+            };
+
+            const nextSlide = () => {
+                currentIndex = (currentIndex + 1) % heroSlides.length;
+                showSlide(currentIndex);
+            };
+
+            showSlide(currentIndex);
+            setInterval(nextSlide, 2500);
+        });
+
+        // Project slider functionality for each card
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach((card, index) => {
+                const sliderImages = card.querySelector('.slider-images');
+                let imageIndex = 0;
+
+                const updateSlider = () => {
+           	    const totalImages = sliderImages.children.length;
+                    sliderImages.style.transform = `translateX(-${imageIndex * 100}%)`;
+                };
+
+                // Automatically change the image every 3 seconds
+                setInterval(() => {
+                    imageIndex = (imageIndex + 1) % sliderImages.children.length;
+                    updateSlider();
+                }, 3000 + index * 500);  // 3000 milliseconds = 3 seconds
+            });
+        });
+    </script>
+
+</body>
+</html>

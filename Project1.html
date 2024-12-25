@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YPPhotography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great Vibes">
+
+    <style>
+        /* General Styles */
+        body {
+            height: 100vh;
+            background-color: #181818;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 3;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3.5rem;
+            position: absolute;
+            top: 0;
+            width: 92%;
+            z-index: 10;
+            color: #fff;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5rem;
+	    font-size: 1.7rem;
+        }
+
+        .instagram-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+
+        .gallery h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: #fff;
+
+        }
+        .gallery h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            color: #fff;
+
+        }
+	.gallery {
+   	    padding: 5rem 2rem; /* Add padding for some spacing */
+   	    max-width: 100%; /* Prevent the gallery from exceeding the viewport width */
+   	    margin: auto;
+	}
+
+        .gallery-grid {
+            display: grid;
+    	    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); /* Adjust column count dynamically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%; /* Adjusts image width to fit the grid cell */
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Differentiation for large and tall images */
+        .gallery-item.large {
+            grid-column: span 2; /* Large images take two columns */
+            grid-row: span 0.8; /* Tall images take two rows */
+
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2; /* Tall images take two rows */
+            grid-column: span 2; /* Large images take two columns */
+
+        }
+
+        /* Checkboxes for image selection */
+        .checkbox {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        /* Actions container for buttons */
+        .actions {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .actions button {
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            background-color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">YPPhotography</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="Portfolio.html">Portfolio</a></li>
+                <li><a href="https://instagram.com/yannpeillat/"><img src="instagram-logo.png" alt="Instagram" class="instagram-icon"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h1>GALA CPP 2024</h1>
+        <h2>20/12/2024</h2>
+
+        <div class="actions">
+            <button id="selectAll">Select All</button>
+            <button id="downloadSelected">Download Selected</button>
+        </div>
+
+        <div class="gallery-grid">
+                        <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4649.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4649.JPG" alt="_DSC4649" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4650.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4650.JPG" alt="_DSC4650" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4653.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4653.JPG" alt="_DSC4653" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4654.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4654.JPG" alt="_DSC4654" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4655.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4655.JPG" alt="_DSC4655" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4657.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4657.JPG" alt="_DSC4657" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4658.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4658.JPG" alt="_DSC4658" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4660.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4660.JPG" alt="_DSC4660" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4661.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4661.JPG" alt="_DSC4661" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4663.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4663.JPG" alt="_DSC4663" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4664.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4664.JPG" alt="_DSC4664" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4666.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4666.JPG" alt="_DSC4666" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4667.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4667.JPG" alt="_DSC4667" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4671.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4671.JPG" alt="_DSC4671" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4672.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4672.JPG" alt="_DSC4672" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4673.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4673.JPG" alt="_DSC4673" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4675.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4675.JPG" alt="_DSC4675" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4676.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4676.JPG" alt="_DSC4676" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4678.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4678.JPG" alt="_DSC4678" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4679.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4679.JPG" alt="_DSC4679" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4680.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4680.JPG" alt="_DSC4680" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4684.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4684.JPG" alt="_DSC4684" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4687.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4687.JPG" alt="_DSC4687" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4688.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4688.JPG" alt="_DSC4688" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4691.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4691.JPG" alt="_DSC4691" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4692.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4692.JPG" alt="_DSC4692" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4693.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4693.JPG" alt="_DSC4693" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4697.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4697.JPG" alt="_DSC4697" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4698.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4698.JPG" alt="_DSC4698" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4699.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4699.JPG" alt="_DSC4699" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4700.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4700.JPG" alt="_DSC4700" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4701.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4701.JPG" alt="_DSC4701" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4702.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4702.JPG" alt="_DSC4702" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4703.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4703.JPG" alt="_DSC4703" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4704.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4704.JPG" alt="_DSC4704" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4705.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4705.JPG" alt="_DSC4705" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4706.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4706.JPG" alt="_DSC4706" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4709.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4709.JPG" alt="_DSC4709" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4710.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4710.JPG" alt="_DSC4710" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4713.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4713.JPG" alt="_DSC4713" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4714.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4714.JPG" alt="_DSC4714" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4715.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4715.JPG" alt="_DSC4715" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4717.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4717.JPG" alt="_DSC4717" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4718.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4718.JPG" alt="_DSC4718" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4720.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4720.JPG" alt="_DSC4720" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4723.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4723.JPG" alt="_DSC4723" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4724.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4724.JPG" alt="_DSC4724" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4725.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4725.JPG" alt="_DSC4725" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4726.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4726.JPG" alt="_DSC4726" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4727.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4727.JPG" alt="_DSC4727" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4729.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4729.JPG" alt="_DSC4729" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4730.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4730.JPG" alt="_DSC4730" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4731.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4731.JPG" alt="_DSC4731" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4737.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4737.JPG" alt="_DSC4737" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4738.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4738.JPG" alt="_DSC4738" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4741.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4741.JPG" alt="_DSC4741" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4743.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4743.JPG" alt="_DSC4743" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4744.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4744.JPG" alt="_DSC4744" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4745.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4745.JPG" alt="_DSC4745" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4746.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4746.JPG" alt="_DSC4746" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4747.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4747.JPG" alt="_DSC4747" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4749.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4749.JPG" alt="_DSC4749" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4750.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4750.JPG" alt="_DSC4750" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4751.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4751.JPG" alt="_DSC4751" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4752.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4752.JPG" alt="_DSC4752" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4753.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4753.JPG" alt="_DSC4753" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4754.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4754.JPG" alt="_DSC4754" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4755.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4755.JPG" alt="_DSC4755" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4756.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4756.JPG" alt="_DSC4756" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4760.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4760.JPG" alt="_DSC4760" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4761.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4761.JPG" alt="_DSC4761" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4762.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4762.JPG" alt="_DSC4762" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4766.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4766.JPG" alt="_DSC4766" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4767.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4767.JPG" alt="_DSC4767" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4769.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4769.JPG" alt="_DSC4769" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4772.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4772.JPG" alt="_DSC4772" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4773.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4773.JPG" alt="_DSC4773" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4776.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4776.JPG" alt="_DSC4776" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4777.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4777.JPG" alt="_DSC4777" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4780.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4780.JPG" alt="_DSC4780" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4781.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4781.JPG" alt="_DSC4781" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4784.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4784.JPG" alt="_DSC4784" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4785.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4785.JPG" alt="_DSC4785" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4788.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4788.JPG" alt="_DSC4788" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4789.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4789.JPG" alt="_DSC4789" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4793.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4793.JPG" alt="_DSC4793" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4794.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4794.JPG" alt="_DSC4794" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4795.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4795.JPG" alt="_DSC4795" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4796.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4796.JPG" alt="_DSC4796" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4797.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4797.JPG" alt="_DSC4797" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4799.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4799.JPG" alt="_DSC4799" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4801.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4801.JPG" alt="_DSC4801" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4802.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4802.JPG" alt="_DSC4802" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4804.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4804.JPG" alt="_DSC4804" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4805.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4805.JPG" alt="_DSC4805" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4807.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4807.JPG" alt="_DSC4807" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4808.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4808.JPG" alt="_DSC4808" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4813.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4813.JPG" alt="_DSC4813" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4815.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4815.JPG" alt="_DSC4815" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4817.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4817.JPG" alt="_DSC4817" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4818.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4818.JPG" alt="_DSC4818" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4819.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4819.JPG" alt="_DSC4819" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4823.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4823.JPG" alt="_DSC4823" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4824.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4824.JPG" alt="_DSC4824" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4826.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4826.JPG" alt="_DSC4826" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4827.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4827.JPG" alt="_DSC4827" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4828.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4828.JPG" alt="_DSC4828" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4829.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4829.JPG" alt="_DSC4829" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4830.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4830.JPG" alt="_DSC4830" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4831.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4831.JPG" alt="_DSC4831" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4832.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4832.JPG" alt="_DSC4832" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4833.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4833.JPG" alt="_DSC4833" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4834.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4834.JPG" alt="_DSC4834" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4835.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4835.JPG" alt="_DSC4835" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4838.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4838.JPG" alt="_DSC4838" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4840.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4840.JPG" alt="_DSC4840" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4842.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4842.JPG" alt="_DSC4842" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4843.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4843.JPG" alt="_DSC4843" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4844.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4844.JPG" alt="_DSC4844" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4847.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4847.JPG" alt="_DSC4847" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4848.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4848.JPG" alt="_DSC4848" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4852.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4852.JPG" alt="_DSC4852" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4853.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4853.JPG" alt="_DSC4853" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4856.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4856.JPG" alt="_DSC4856" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4857.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4857.JPG" alt="_DSC4857" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4862.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4862.JPG" alt="_DSC4862" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4863.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4863.JPG" alt="_DSC4863" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4864.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4864.JPG" alt="_DSC4864" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4867.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4867.JPG" alt="_DSC4867" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4868.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4868.JPG" alt="_DSC4868" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4870.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4870.JPG" alt="_DSC4870" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4872.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4872.JPG" alt="_DSC4872" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4874.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4874.JPG" alt="_DSC4874" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4875.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4875.JPG" alt="_DSC4875" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4876.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4876.JPG" alt="_DSC4876" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4880.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4880.JPG" alt="_DSC4880" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4882.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4882.JPG" alt="_DSC4882" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4883.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4883.JPG" alt="_DSC4883" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4884.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4884.JPG" alt="_DSC4884" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4889.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4889.JPG" alt="_DSC4889" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4891.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4891.JPG" alt="_DSC4891" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4892.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4892.JPG" alt="_DSC4892" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4895.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4895.JPG" alt="_DSC4895" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4896.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4896.JPG" alt="_DSC4896" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4897.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4897.JPG" alt="_DSC4897" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4903.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4903.JPG" alt="_DSC4903" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4905.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4905.JPG" alt="_DSC4905" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4906.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4906.JPG" alt="_DSC4906" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4910.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4910.JPG" alt="_DSC4910" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4912.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4912.JPG" alt="_DSC4912" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4913.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4913.JPG" alt="_DSC4913" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4915.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4915.JPG" alt="_DSC4915" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4917.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4917.JPG" alt="_DSC4917" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4918.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4918.JPG" alt="_DSC4918" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4919.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4919.JPG" alt="_DSC4919" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4921.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4921.JPG" alt="_DSC4921" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4922.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4922.JPG" alt="_DSC4922" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4929.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4929.JPG" alt="_DSC4929" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4930.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4930.JPG" alt="_DSC4930" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4932.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4932.JPG" alt="_DSC4932" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4933.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4933.JPG" alt="_DSC4933" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4935.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4935.JPG" alt="_DSC4935" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4936.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4936.JPG" alt="_DSC4936" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4938.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4938.JPG" alt="_DSC4938" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4939.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4939.JPG" alt="_DSC4939" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4944.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4944.JPG" alt="_DSC4944" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4946.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4946.JPG" alt="_DSC4946" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4947.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4947.JPG" alt="_DSC4947" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4948.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4948.JPG" alt="_DSC4948" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4949.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4949.JPG" alt="_DSC4949" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4950.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4950.JPG" alt="_DSC4950" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4953.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4953.JPG" alt="_DSC4953" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4954.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4954.JPG" alt="_DSC4954" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4959.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4959.JPG" alt="_DSC4959" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4962.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4962.JPG" alt="_DSC4962" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4964.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4964.JPG" alt="_DSC4964" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4967.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4967.JPG" alt="_DSC4967" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4968.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4968.JPG" alt="_DSC4968" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4970.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4970.JPG" alt="_DSC4970" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4972.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4972.JPG" alt="_DSC4972" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4975.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4975.JPG" alt="_DSC4975" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4978.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4978.JPG" alt="_DSC4978" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4979.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4979.JPG" alt="_DSC4979" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4980.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4980.JPG" alt="_DSC4980" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4982.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4982.JPG" alt="_DSC4982" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4983.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4983.JPG" alt="_DSC4983" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4986.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4986.JPG" alt="_DSC4986" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4989.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4989.JPG" alt="_DSC4989" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4991.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4991.JPG" alt="_DSC4991" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4992.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4992.JPG" alt="_DSC4992" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4993.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4993.JPG" alt="_DSC4993" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4994.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4994.JPG" alt="_DSC4994" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4997.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4997.JPG" alt="_DSC4997" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC4998.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC4998.JPG" alt="_DSC4998" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5001.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5001.JPG" alt="_DSC5001" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5002.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5002.JPG" alt="_DSC5002" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5007.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5007.JPG" alt="_DSC5007" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5008.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5008.JPG" alt="_DSC5008" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5011.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5011.JPG" alt="_DSC5011" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5012.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5012.JPG" alt="_DSC5012" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5013.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5013.JPG" alt="_DSC5013" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5014.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5014.JPG" alt="_DSC5014" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5017.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5017.JPG" alt="_DSC5017" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5018.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5018.JPG" alt="_DSC5018" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5021.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5021.JPG" alt="_DSC5021" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5022.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5022.JPG" alt="_DSC5022" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5024.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5024.JPG" alt="_DSC5024" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5025.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5025.JPG" alt="_DSC5025" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5027.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5027.JPG" alt="_DSC5027" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5028.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5028.JPG" alt="_DSC5028" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5030.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5030.JPG" alt="_DSC5030" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5031.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5031.JPG" alt="_DSC5031" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5033.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5033.JPG" alt="_DSC5033" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5035.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5035.JPG" alt="_DSC5035" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5036.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5036.JPG" alt="_DSC5036" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5038.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5038.JPG" alt="_DSC5038" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5039.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5039.JPG" alt="_DSC5039" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5042.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5042.JPG" alt="_DSC5042" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5043.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5043.JPG" alt="_DSC5043" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5045.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5045.JPG" alt="_DSC5045" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5046.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5046.JPG" alt="_DSC5046" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5048.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5048.JPG" alt="_DSC5048" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5049.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5049.JPG" alt="_DSC5049" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5051.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5051.JPG" alt="_DSC5051" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5052.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5052.JPG" alt="_DSC5052" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5053.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5053.JPG" alt="_DSC5053" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5058.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5058.JPG" alt="_DSC5058" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5060.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5060.JPG" alt="_DSC5060" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5062.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5062.JPG" alt="_DSC5062" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5065.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5065.JPG" alt="_DSC5065" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5069.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5069.JPG" alt="_DSC5069" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5070.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5070.JPG" alt="_DSC5070" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5071.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5071.JPG" alt="_DSC5071" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5073.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5073.JPG" alt="_DSC5073" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5074.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5074.JPG" alt="_DSC5074" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5078.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5078.JPG" alt="_DSC5078" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5079.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5079.JPG" alt="_DSC5079" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5081.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5081.JPG" alt="_DSC5081" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5082.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5082.JPG" alt="_DSC5082" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5086.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5086.JPG" alt="_DSC5086" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5089.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5089.JPG" alt="_DSC5089" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5092.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5092.JPG" alt="_DSC5092" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5093.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5093.JPG" alt="_DSC5093" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5095.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5095.JPG" alt="_DSC5095" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5097.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5097.JPG" alt="_DSC5097" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5098.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5098.JPG" alt="_DSC5098" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5099.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5099.JPG" alt="_DSC5099" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5102.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5102.JPG" alt="_DSC5102" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5103.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5103.JPG" alt="_DSC5103" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5105.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5105.JPG" alt="_DSC5105" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5106.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5106.JPG" alt="_DSC5106" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5111.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5111.JPG" alt="_DSC5111" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5112.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5112.JPG" alt="_DSC5112" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5113.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5113.JPG" alt="_DSC5113" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5114.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5114.JPG" alt="_DSC5114" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5120.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5120.JPG" alt="_DSC5120" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5121.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5121.JPG" alt="_DSC5121" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5124.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5124.JPG" alt="_DSC5124" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5125.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5125.JPG" alt="_DSC5125" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5129.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5129.JPG" alt="_DSC5129" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5135.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5135.JPG" alt="_DSC5135" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5136.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5136.JPG" alt="_DSC5136" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5137.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5137.JPG" alt="_DSC5137" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5142.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5142.JPG" alt="_DSC5142" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5145.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5145.JPG" alt="_DSC5145" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5147.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5147.JPG" alt="_DSC5147" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5148.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5148.JPG" alt="_DSC5148" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5150.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5150.JPG" alt="_DSC5150" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5151.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5151.JPG" alt="_DSC5151" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5153.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5153.JPG" alt="_DSC5153" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5154.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5154.JPG" alt="_DSC5154" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5157.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5157.JPG" alt="_DSC5157" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5158.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5158.JPG" alt="_DSC5158" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5164.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5164.JPG" alt="_DSC5164" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5166.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5166.JPG" alt="_DSC5166" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5167.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5167.JPG" alt="_DSC5167" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5170.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5170.JPG" alt="_DSC5170" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5171.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5171.JPG" alt="_DSC5171" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5172.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5172.JPG" alt="_DSC5172" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5173.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5173.JPG" alt="_DSC5173" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5174.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5174.JPG" alt="_DSC5174" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5175.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5175.JPG" alt="_DSC5175" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5176.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5176.JPG" alt="_DSC5176" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5177.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5177.JPG" alt="_DSC5177" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5178.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5178.JPG" alt="_DSC5178" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5179.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5179.JPG" alt="_DSC5179" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5180.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5180.JPG" alt="_DSC5180" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5181.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5181.JPG" alt="_DSC5181" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5186.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5186.JPG" alt="_DSC5186" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5187.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5187.JPG" alt="_DSC5187" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5188.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5188.JPG" alt="_DSC5188" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5189.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5189.JPG" alt="_DSC5189" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5193.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5193.JPG" alt="_DSC5193" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5194.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5194.JPG" alt="_DSC5194" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5195.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5195.JPG" alt="_DSC5195" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5197.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5197.JPG" alt="_DSC5197" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5199.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5199.JPG" alt="_DSC5199" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5200.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5200.JPG" alt="_DSC5200" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5201.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5201.JPG" alt="_DSC5201" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5202.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5202.JPG" alt="_DSC5202" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5204.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5204.JPG" alt="_DSC5204" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5205.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5205.JPG" alt="_DSC5205" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5209.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5209.JPG" alt="_DSC5209" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5210.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5210.JPG" alt="_DSC5210" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5211.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5211.JPG" alt="_DSC5211" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5212.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5212.JPG" alt="_DSC5212" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5213.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5213.JPG" alt="_DSC5213" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5214.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5214.JPG" alt="_DSC5214" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5215.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5215.JPG" alt="_DSC5215" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5217.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5217.JPG" alt="_DSC5217" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5218.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5218.JPG" alt="_DSC5218" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5219.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5219.JPG" alt="_DSC5219" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5222.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5222.JPG" alt="_DSC5222" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5223.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5223.JPG" alt="_DSC5223" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5224.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5224.JPG" alt="_DSC5224" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5225.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5225.JPG" alt="_DSC5225" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5226.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5226.JPG" alt="_DSC5226" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5227.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5227.JPG" alt="_DSC5227" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5230.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5230.JPG" alt="_DSC5230" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5233.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5233.JPG" alt="_DSC5233" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5236.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5236.JPG" alt="_DSC5236" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5238.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5238.JPG" alt="_DSC5238" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5242.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5242.JPG" alt="_DSC5242" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5247.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5247.JPG" alt="_DSC5247" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5248.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5248.JPG" alt="_DSC5248" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5251.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5251.JPG" alt="_DSC5251" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5253.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5253.JPG" alt="_DSC5253" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5254.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5254.JPG" alt="_DSC5254" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5257.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5257.JPG" alt="_DSC5257" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5258.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5258.JPG" alt="_DSC5258" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5260.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5260.JPG" alt="_DSC5260" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5261.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5261.JPG" alt="_DSC5261" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5262.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5262.JPG" alt="_DSC5262" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5263.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5263.JPG" alt="_DSC5263" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5265.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5265.JPG" alt="_DSC5265" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5267.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5267.JPG" alt="_DSC5267" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5268.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5268.JPG" alt="_DSC5268" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5269.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5269.JPG" alt="_DSC5269" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5280.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5280.JPG" alt="_DSC5280" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5281.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5281.JPG" alt="_DSC5281" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5282.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5282.JPG" alt="_DSC5282" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5283.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5283.JPG" alt="_DSC5283" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5284.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5284.JPG" alt="_DSC5284" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5285.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5285.JPG" alt="_DSC5285" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5290.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5290.JPG" alt="_DSC5290" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5291.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5291.JPG" alt="_DSC5291" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5292.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5292.JPG" alt="_DSC5292" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5294.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5294.JPG" alt="_DSC5294" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5299.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5299.JPG" alt="_DSC5299" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5300.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5300.JPG" alt="_DSC5300" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5301.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5301.JPG" alt="_DSC5301" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5303.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5303.JPG" alt="_DSC5303" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5304.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5304.JPG" alt="_DSC5304" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5306.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5306.JPG" alt="_DSC5306" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5308.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5308.JPG" alt="_DSC5308" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5309.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5309.JPG" alt="_DSC5309" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5315.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5315.JPG" alt="_DSC5315" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5317.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5317.JPG" alt="_DSC5317" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5318.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5318.JPG" alt="_DSC5318" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5319.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5319.JPG" alt="_DSC5319" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5322.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5322.JPG" alt="_DSC5322" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5335.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5335.JPG" alt="_DSC5335" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5336.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5336.JPG" alt="_DSC5336" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5337.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5337.JPG" alt="_DSC5337" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5339.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5339.JPG" alt="_DSC5339" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5340.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5340.JPG" alt="_DSC5340" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5343.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5343.JPG" alt="_DSC5343" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5344.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5344.JPG" alt="_DSC5344" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5348.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5348.JPG" alt="_DSC5348" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5350.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5350.JPG" alt="_DSC5350" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5351.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5351.JPG" alt="_DSC5351" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5352.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5352.JPG" alt="_DSC5352" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5353.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5353.JPG" alt="_DSC5353" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5354.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5354.JPG" alt="_DSC5354" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5355.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5355.JPG" alt="_DSC5355" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5357.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5357.JPG" alt="_DSC5357" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5359.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5359.JPG" alt="_DSC5359" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5361.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5361.JPG" alt="_DSC5361" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5362.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5362.JPG" alt="_DSC5362" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5363.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5363.JPG" alt="_DSC5363" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5364.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5364.JPG" alt="_DSC5364" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5365.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5365.JPG" alt="_DSC5365" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5368.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5368.JPG" alt="_DSC5368" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5369.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5369.JPG" alt="_DSC5369" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5372.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5372.JPG" alt="_DSC5372" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5373.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5373.JPG" alt="_DSC5373" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5376.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5376.JPG" alt="_DSC5376" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5380.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5380.JPG" alt="_DSC5380" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5383.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5383.JPG" alt="_DSC5383" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5388.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5388.JPG" alt="_DSC5388" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5389.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5389.JPG" alt="_DSC5389" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5390.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5390.JPG" alt="_DSC5390" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5392.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5392.JPG" alt="_DSC5392" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5393.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5393.JPG" alt="_DSC5393" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5394.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5394.JPG" alt="_DSC5394" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5397.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5397.JPG" alt="_DSC5397" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5401.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5401.JPG" alt="_DSC5401" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5402.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5402.JPG" alt="_DSC5402" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5403.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5403.JPG" alt="_DSC5403" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5404.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5404.JPG" alt="_DSC5404" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5406.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5406.JPG" alt="_DSC5406" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5409.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5409.JPG" alt="_DSC5409" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5410.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5410.JPG" alt="_DSC5410" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5412.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5412.JPG" alt="_DSC5412" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5414.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5414.JPG" alt="_DSC5414" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5415.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5415.JPG" alt="_DSC5415" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5420.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5420.JPG" alt="_DSC5420" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5424.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5424.JPG" alt="_DSC5424" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5425.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5425.JPG" alt="_DSC5425" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5426.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5426.JPG" alt="_DSC5426" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5427.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5427.JPG" alt="_DSC5427" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5428.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5428.JPG" alt="_DSC5428" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5429.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5429.JPG" alt="_DSC5429" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5430.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5430.JPG" alt="_DSC5430" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5435.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5435.JPG" alt="_DSC5435" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5437.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5437.JPG" alt="_DSC5437" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5438.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5438.JPG" alt="_DSC5438" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5439.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5439.JPG" alt="_DSC5439" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5440.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5440.JPG" alt="_DSC5440" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5441.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5441.JPG" alt="_DSC5441" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5442.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5442.JPG" alt="_DSC5442" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5443.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5443.JPG" alt="_DSC5443" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5445.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5445.JPG" alt="_DSC5445" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5446.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5446.JPG" alt="_DSC5446" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5447.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5447.JPG" alt="_DSC5447" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5449.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5449.JPG" alt="_DSC5449" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5450.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5450.JPG" alt="_DSC5450" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5451.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5451.JPG" alt="_DSC5451" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5453.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5453.JPG" alt="_DSC5453" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5456.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5456.JPG" alt="_DSC5456" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5457.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5457.JPG" alt="_DSC5457" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5458.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5458.JPG" alt="_DSC5458" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5461.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5461.JPG" alt="_DSC5461" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5462.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5462.JPG" alt="_DSC5462" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5467.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5467.JPG" alt="_DSC5467" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5469.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5469.JPG" alt="_DSC5469" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5478.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5478.JPG" alt="_DSC5478" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5480.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5480.JPG" alt="_DSC5480" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5482.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5482.JPG" alt="_DSC5482" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5484.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5484.JPG" alt="_DSC5484" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5485.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5485.JPG" alt="_DSC5485" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5486.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5486.JPG" alt="_DSC5486" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\GALA 2024/_DSC5487.JPG">
+                <img data-src="Q:\Selection\Prepa\GALA 2024/_DSC5487.JPG" alt="_DSC5487" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <!-- Add more photos as needed -->
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for Select All and Download Selected functionality
+        const selectAllBtn = document.getElementById('selectAll');
+        const downloadBtn = document.getElementById('downloadSelected');
+        const checkboxes = document.querySelectorAll('.checkbox');
+
+        selectAllBtn.addEventListener('click', () => {
+            checkboxes.forEach(checkbox => checkbox.checked = true);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const selectedPhotos = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            if (selectedPhotos.length === 0) {
+                alert('No photos selected for download.');
+                return;
+            }
+
+            selectedPhotos.forEach(photo => {
+                const link = document.createElement('a');
+                link.href = photo;
+                link.download = photo;
+                link.click();
+            });
+        });
+    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Contact: Yann Peillat | Email: yann.peillat@gmail.com | Phone: +33 (0) 6 41 38 92 80 | <a href="https://instagram.com/yannpeillat/">Instagram</a></p>
+            <p>&copy; 2024 YPPhotography. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Intersection Observer for lazy loading and fade-in effect
+        const images = document.querySelectorAll('.gallery img');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start loading the image only when it's about to come into view
+                    const image = entry.target;
+                    const imgSrc = image.getAttribute('data-src');
+
+                    if (imgSrc) {
+                        image.src = imgSrc; // Set the src attribute to load the image
+                        image.classList.add('loaded'); // Apply the 'loaded' class for opacity transition
+                        image.removeAttribute('data-src'); // Remove data-src to avoid loading again
+                    }
+                    observer.unobserve(image); // Stop observing once it's loaded
+                }
+            });
+        }, {
+            rootMargin: '500px 0px', // Trigger when 50px away from the viewport
+            threshold: 0.001 // Trigger when 0.1% of the image is visible
+        });
+
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    </script>
+
+</body>
+</html>

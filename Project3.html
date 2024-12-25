@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YPPhotography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great Vibes">
+
+    <style>
+        /* General Styles */
+        body {
+            height: 100vh;
+            background-color: #181818;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 3;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3.5rem;
+            position: absolute;
+            top: 0;
+            width: 92%;
+            z-index: 10;
+            color: #fff;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5rem;
+	    font-size: 1.7rem;
+        }
+
+        .instagram-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+
+        .gallery h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: #fff;
+
+        }
+        .gallery h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            color: #fff;
+
+        }
+	.gallery {
+   	    padding: 5rem 2rem; /* Add padding for some spacing */
+   	    max-width: 100%; /* Prevent the gallery from exceeding the viewport width */
+   	    margin: auto;
+	}
+
+        .gallery-grid {
+            display: grid;
+    	    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); /* Adjust column count dynamically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%; /* Adjusts image width to fit the grid cell */
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Differentiation for large and tall images */
+        .gallery-item.large {
+            grid-column: span 2; /* Large images take two columns */
+            grid-row: span 0.8; /* Tall images take two rows */
+
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2; /* Tall images take two rows */
+            grid-column: span 2; /* Large images take two columns */
+
+        }
+
+        /* Checkboxes for image selection */
+        .checkbox {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        /* Actions container for buttons */
+        .actions {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .actions button {
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            background-color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">YPPhotography</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="Portfolio.html">Portfolio</a></li>
+                <li><a href="https://instagram.com/yannpeillat/"><img src="instagram-logo.png" alt="Instagram" class="instagram-icon"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h1>HALLOWEEN 2024</h1>
+        <h2>25/10/2024</h2>
+
+        <div class="actions">
+            <button id="selectAll">Select All</button>
+            <button id="downloadSelected">Download Selected</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2548.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2548.JPG" alt="_DSC2548" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2549.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2549.JPG" alt="_DSC2549" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2550.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2550.JPG" alt="_DSC2550" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2551.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2551.JPG" alt="_DSC2551" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2552.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2552.JPG" alt="_DSC2552" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2553.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2553.JPG" alt="_DSC2553" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2554.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2554.JPG" alt="_DSC2554" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2555.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2555.JPG" alt="_DSC2555" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2556.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2556.JPG" alt="_DSC2556" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2557.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2557.JPG" alt="_DSC2557" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2558.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2558.JPG" alt="_DSC2558" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2559.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2559.JPG" alt="_DSC2559" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2560.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2560.JPG" alt="_DSC2560" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2561.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2561.JPG" alt="_DSC2561" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2562.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2562.JPG" alt="_DSC2562" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2563.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2563.JPG" alt="_DSC2563" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2564.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2564.JPG" alt="_DSC2564" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2565.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2565.JPG" alt="_DSC2565" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2566.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2566.JPG" alt="_DSC2566" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2567.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2567.JPG" alt="_DSC2567" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2568.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2568.JPG" alt="_DSC2568" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2570.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2570.JPG" alt="_DSC2570" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2571.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2571.JPG" alt="_DSC2571" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2572.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2572.JPG" alt="_DSC2572" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2573.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2573.JPG" alt="_DSC2573" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2574.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2574.JPG" alt="_DSC2574" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2575.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2575.JPG" alt="_DSC2575" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2576.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2576.JPG" alt="_DSC2576" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2579.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2579.JPG" alt="_DSC2579" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2580.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2580.JPG" alt="_DSC2580" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2581.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2581.JPG" alt="_DSC2581" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2582.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2582.JPG" alt="_DSC2582" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2583.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2583.JPG" alt="_DSC2583" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2584.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2584.JPG" alt="_DSC2584" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2585.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2585.JPG" alt="_DSC2585" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2586.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2586.JPG" alt="_DSC2586" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2587.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2587.JPG" alt="_DSC2587" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2588.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2588.JPG" alt="_DSC2588" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2589.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2589.JPG" alt="_DSC2589" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2590.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2590.JPG" alt="_DSC2590" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2592.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2592.JPG" alt="_DSC2592" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2595.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2595.JPG" alt="_DSC2595" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2596.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2596.JPG" alt="_DSC2596" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2597.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2597.JPG" alt="_DSC2597" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2598.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2598.JPG" alt="_DSC2598" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2599.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2599.JPG" alt="_DSC2599" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2600.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2600.JPG" alt="_DSC2600" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2601.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2601.JPG" alt="_DSC2601" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2602.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2602.JPG" alt="_DSC2602" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2603.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2603.JPG" alt="_DSC2603" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2604.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2604.JPG" alt="_DSC2604" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2605.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2605.JPG" alt="_DSC2605" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2606.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2606.JPG" alt="_DSC2606" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2607.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2607.JPG" alt="_DSC2607" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2608.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2608.JPG" alt="_DSC2608" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2610.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2610.JPG" alt="_DSC2610" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2611.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2611.JPG" alt="_DSC2611" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2612.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2612.JPG" alt="_DSC2612" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2613.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2613.JPG" alt="_DSC2613" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2614.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2614.JPG" alt="_DSC2614" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2615.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2615.JPG" alt="_DSC2615" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2616.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2616.JPG" alt="_DSC2616" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2617.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2617.JPG" alt="_DSC2617" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2618.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2618.JPG" alt="_DSC2618" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2619.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2619.JPG" alt="_DSC2619" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2620.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2620.JPG" alt="_DSC2620" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2621.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2621.JPG" alt="_DSC2621" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2622.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2622.JPG" alt="_DSC2622" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2623.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2623.JPG" alt="_DSC2623" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2624.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2624.JPG" alt="_DSC2624" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2627.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2627.JPG" alt="_DSC2627" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2628.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2628.JPG" alt="_DSC2628" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2629.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2629.JPG" alt="_DSC2629" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2630.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2630.JPG" alt="_DSC2630" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2631.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2631.JPG" alt="_DSC2631" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2632.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2632.JPG" alt="_DSC2632" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2633.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2633.JPG" alt="_DSC2633" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2634.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2634.JPG" alt="_DSC2634" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2635.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2635.JPG" alt="_DSC2635" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2636.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2636.JPG" alt="_DSC2636" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2637.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2637.JPG" alt="_DSC2637" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2638.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2638.JPG" alt="_DSC2638" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2639.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2639.JPG" alt="_DSC2639" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2640.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2640.JPG" alt="_DSC2640" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2641.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2641.JPG" alt="_DSC2641" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2642.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2642.JPG" alt="_DSC2642" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2643.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2643.JPG" alt="_DSC2643" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2644.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2644.JPG" alt="_DSC2644" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2645.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2645.JPG" alt="_DSC2645" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2646.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2646.JPG" alt="_DSC2646" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2647.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2647.JPG" alt="_DSC2647" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2648.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2648.JPG" alt="_DSC2648" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2649.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2649.JPG" alt="_DSC2649" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2650.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2650.JPG" alt="_DSC2650" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2651.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2651.JPG" alt="_DSC2651" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2652.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2652.JPG" alt="_DSC2652" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2653.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2653.JPG" alt="_DSC2653" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2654.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2654.JPG" alt="_DSC2654" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2655.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2655.JPG" alt="_DSC2655" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2656.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2656.JPG" alt="_DSC2656" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2657.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2657.JPG" alt="_DSC2657" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2658.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2658.JPG" alt="_DSC2658" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2659.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2659.JPG" alt="_DSC2659" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2660.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2660.JPG" alt="_DSC2660" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2661.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2661.JPG" alt="_DSC2661" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2662.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2662.JPG" alt="_DSC2662" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2663.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2663.JPG" alt="_DSC2663" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2665.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2665.JPG" alt="_DSC2665" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2666.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2666.JPG" alt="_DSC2666" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2667.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2667.JPG" alt="_DSC2667" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2668.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2668.JPG" alt="_DSC2668" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2669.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2669.JPG" alt="_DSC2669" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2670.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2670.JPG" alt="_DSC2670" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2671.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2671.JPG" alt="_DSC2671" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2672.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2672.JPG" alt="_DSC2672" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2673.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2673.JPG" alt="_DSC2673" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2674.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2674.JPG" alt="_DSC2674" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2675.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2675.JPG" alt="_DSC2675" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2676.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2676.JPG" alt="_DSC2676" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2677.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2677.JPG" alt="_DSC2677" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2678.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2678.JPG" alt="_DSC2678" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2679.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2679.JPG" alt="_DSC2679" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2680.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2680.JPG" alt="_DSC2680" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2681.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2681.JPG" alt="_DSC2681" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2682.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2682.JPG" alt="_DSC2682" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2683.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2683.JPG" alt="_DSC2683" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2684.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2684.JPG" alt="_DSC2684" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2685.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2685.JPG" alt="_DSC2685" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2686.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2686.JPG" alt="_DSC2686" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2687.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2687.JPG" alt="_DSC2687" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2688.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2688.JPG" alt="_DSC2688" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2689.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2689.JPG" alt="_DSC2689" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2690.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2690.JPG" alt="_DSC2690" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2691.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2691.JPG" alt="_DSC2691" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2692.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2692.JPG" alt="_DSC2692" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2693.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2693.JPG" alt="_DSC2693" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2694.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2694.JPG" alt="_DSC2694" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2695.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2695.JPG" alt="_DSC2695" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2696.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2696.JPG" alt="_DSC2696" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2697.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2697.JPG" alt="_DSC2697" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2700.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2700.JPG" alt="_DSC2700" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2701.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2701.JPG" alt="_DSC2701" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2702.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2702.JPG" alt="_DSC2702" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2703.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2703.JPG" alt="_DSC2703" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2704.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2704.JPG" alt="_DSC2704" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2705.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2705.JPG" alt="_DSC2705" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2706.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2706.JPG" alt="_DSC2706" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2707.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2707.JPG" alt="_DSC2707" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2711.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2711.JPG" alt="_DSC2711" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2712.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2712.JPG" alt="_DSC2712" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2713.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2713.JPG" alt="_DSC2713" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2714.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2714.JPG" alt="_DSC2714" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2715.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2715.JPG" alt="_DSC2715" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2716.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2716.JPG" alt="_DSC2716" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2717.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2717.JPG" alt="_DSC2717" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2718.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2718.JPG" alt="_DSC2718" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2719.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2719.JPG" alt="_DSC2719" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2720.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2720.JPG" alt="_DSC2720" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2721.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2721.JPG" alt="_DSC2721" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2722.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2722.JPG" alt="_DSC2722" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2726.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2726.JPG" alt="_DSC2726" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2727.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2727.JPG" alt="_DSC2727" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2728.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2728.JPG" alt="_DSC2728" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2729.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2729.JPG" alt="_DSC2729" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2732.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2732.JPG" alt="_DSC2732" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2733.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2733.JPG" alt="_DSC2733" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2734.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2734.JPG" alt="_DSC2734" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2735.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2735.JPG" alt="_DSC2735" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2736.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2736.JPG" alt="_DSC2736" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2739.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2739.JPG" alt="_DSC2739" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2740.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2740.JPG" alt="_DSC2740" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2741.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2741.JPG" alt="_DSC2741" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2742.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2742.JPG" alt="_DSC2742" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2743.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2743.JPG" alt="_DSC2743" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2744.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2744.JPG" alt="_DSC2744" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2745.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2745.JPG" alt="_DSC2745" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2746.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2746.JPG" alt="_DSC2746" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2747.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2747.JPG" alt="_DSC2747" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2748.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2748.JPG" alt="_DSC2748" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2749.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2749.JPG" alt="_DSC2749" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2750.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2750.JPG" alt="_DSC2750" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2751.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2751.JPG" alt="_DSC2751" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2752.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2752.JPG" alt="_DSC2752" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2753.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2753.JPG" alt="_DSC2753" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2754.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2754.JPG" alt="_DSC2754" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2755.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2755.JPG" alt="_DSC2755" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2756.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2756.JPG" alt="_DSC2756" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2757.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2757.JPG" alt="_DSC2757" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2758.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2758.JPG" alt="_DSC2758" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2759.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2759.JPG" alt="_DSC2759" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2761.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2761.JPG" alt="_DSC2761" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2762.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2762.JPG" alt="_DSC2762" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2764.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2764.JPG" alt="_DSC2764" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2765.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2765.JPG" alt="_DSC2765" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2767.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2767.JPG" alt="_DSC2767" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2768.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2768.JPG" alt="_DSC2768" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2769.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2769.JPG" alt="_DSC2769" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2770.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2770.JPG" alt="_DSC2770" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2771.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2771.JPG" alt="_DSC2771" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2773.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2773.JPG" alt="_DSC2773" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2774.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2774.JPG" alt="_DSC2774" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2775.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2775.JPG" alt="_DSC2775" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2776.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2776.JPG" alt="_DSC2776" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2777.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2777.JPG" alt="_DSC2777" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2778.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2778.JPG" alt="_DSC2778" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2779.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2779.JPG" alt="_DSC2779" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2781.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2781.JPG" alt="_DSC2781" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2782.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2782.JPG" alt="_DSC2782" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2783.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2783.JPG" alt="_DSC2783" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2784.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2784.JPG" alt="_DSC2784" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2785.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2785.JPG" alt="_DSC2785" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2786.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2786.JPG" alt="_DSC2786" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2788.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2788.JPG" alt="_DSC2788" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2789.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2789.JPG" alt="_DSC2789" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2790.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2790.JPG" alt="_DSC2790" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2791.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2791.JPG" alt="_DSC2791" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2792.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2792.JPG" alt="_DSC2792" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2793.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2793.JPG" alt="_DSC2793" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2794.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2794.JPG" alt="_DSC2794" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2795.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2795.JPG" alt="_DSC2795" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2796.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2796.JPG" alt="_DSC2796" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2797.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2797.JPG" alt="_DSC2797" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2798.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2798.JPG" alt="_DSC2798" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2799.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2799.JPG" alt="_DSC2799" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2800.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2800.JPG" alt="_DSC2800" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2801.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2801.JPG" alt="_DSC2801" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2802.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2802.JPG" alt="_DSC2802" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2803.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2803.JPG" alt="_DSC2803" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2804.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2804.JPG" alt="_DSC2804" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2805.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2805.JPG" alt="_DSC2805" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2806.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2806.JPG" alt="_DSC2806" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2807.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2807.JPG" alt="_DSC2807" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2808.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2808.JPG" alt="_DSC2808" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2809.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2809.JPG" alt="_DSC2809" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2810.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2810.JPG" alt="_DSC2810" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2811.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2811.JPG" alt="_DSC2811" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2812.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2812.JPG" alt="_DSC2812" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2813.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2813.JPG" alt="_DSC2813" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2814.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2814.JPG" alt="_DSC2814" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2816.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2816.JPG" alt="_DSC2816" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2817.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2817.JPG" alt="_DSC2817" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2818.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2818.JPG" alt="_DSC2818" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2819.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2819.JPG" alt="_DSC2819" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2820.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2820.JPG" alt="_DSC2820" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2821.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2821.JPG" alt="_DSC2821" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2822.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2822.JPG" alt="_DSC2822" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2823.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2823.JPG" alt="_DSC2823" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2824.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2824.JPG" alt="_DSC2824" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2825.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2825.JPG" alt="_DSC2825" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2826.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2826.JPG" alt="_DSC2826" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2828.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2828.JPG" alt="_DSC2828" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2829.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2829.JPG" alt="_DSC2829" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2830.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2830.JPG" alt="_DSC2830" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2831.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2831.JPG" alt="_DSC2831" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2832.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2832.JPG" alt="_DSC2832" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2833.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2833.JPG" alt="_DSC2833" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2835.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2835.JPG" alt="_DSC2835" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2837.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2837.JPG" alt="_DSC2837" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2838.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2838.JPG" alt="_DSC2838" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2839.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2839.JPG" alt="_DSC2839" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2840.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2840.JPG" alt="_DSC2840" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2841.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2841.JPG" alt="_DSC2841" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2842.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2842.JPG" alt="_DSC2842" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2844.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2844.JPG" alt="_DSC2844" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2845.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2845.JPG" alt="_DSC2845" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2846.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2846.JPG" alt="_DSC2846" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2847.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2847.JPG" alt="_DSC2847" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2848.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2848.JPG" alt="_DSC2848" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2849.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2849.JPG" alt="_DSC2849" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2850.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2850.JPG" alt="_DSC2850" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2851.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2851.JPG" alt="_DSC2851" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2853.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2853.JPG" alt="_DSC2853" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2854.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2854.JPG" alt="_DSC2854" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2855.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2855.JPG" alt="_DSC2855" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2856.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2856.JPG" alt="_DSC2856" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2857.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2857.JPG" alt="_DSC2857" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2858.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2858.JPG" alt="_DSC2858" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2859.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2859.JPG" alt="_DSC2859" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2860.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2860.JPG" alt="_DSC2860" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2861.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2861.JPG" alt="_DSC2861" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2862.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2862.JPG" alt="_DSC2862" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2863.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2863.JPG" alt="_DSC2863" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2864.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2864.JPG" alt="_DSC2864" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2865.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2865.JPG" alt="_DSC2865" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2866.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2866.JPG" alt="_DSC2866" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2867.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2867.JPG" alt="_DSC2867" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2868.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2868.JPG" alt="_DSC2868" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2869.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2869.JPG" alt="_DSC2869" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2870.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2870.JPG" alt="_DSC2870" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2871.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2871.JPG" alt="_DSC2871" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2872.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2872.JPG" alt="_DSC2872" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2873.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2873.JPG" alt="_DSC2873" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2874.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2874.JPG" alt="_DSC2874" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2875.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2875.JPG" alt="_DSC2875" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2879.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2879.JPG" alt="_DSC2879" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2880.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2880.JPG" alt="_DSC2880" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2881.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2881.JPG" alt="_DSC2881" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2882.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2882.JPG" alt="_DSC2882" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2883.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2883.JPG" alt="_DSC2883" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2884.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2884.JPG" alt="_DSC2884" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2885.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2885.JPG" alt="_DSC2885" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2886.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2886.JPG" alt="_DSC2886" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2887.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2887.JPG" alt="_DSC2887" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2888.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2888.JPG" alt="_DSC2888" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2889.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2889.JPG" alt="_DSC2889" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2890.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2890.JPG" alt="_DSC2890" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2891.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2891.JPG" alt="_DSC2891" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2892.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2892.JPG" alt="_DSC2892" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2893.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2893.JPG" alt="_DSC2893" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2894.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2894.JPG" alt="_DSC2894" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2895.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2895.JPG" alt="_DSC2895" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2896.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2896.JPG" alt="_DSC2896" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2899.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2899.JPG" alt="_DSC2899" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2900.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2900.JPG" alt="_DSC2900" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2901.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2901.JPG" alt="_DSC2901" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2902.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2902.JPG" alt="_DSC2902" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2903.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2903.JPG" alt="_DSC2903" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2904.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2904.JPG" alt="_DSC2904" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2905.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2905.JPG" alt="_DSC2905" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2908.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2908.JPG" alt="_DSC2908" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2909.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2909.JPG" alt="_DSC2909" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2910.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2910.JPG" alt="_DSC2910" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2911.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2911.JPG" alt="_DSC2911" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2912.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2912.JPG" alt="_DSC2912" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2913.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2913.JPG" alt="_DSC2913" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2914.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2914.JPG" alt="_DSC2914" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2915.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2915.JPG" alt="_DSC2915" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2916.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2916.JPG" alt="_DSC2916" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2917.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2917.JPG" alt="_DSC2917" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2918.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2918.JPG" alt="_DSC2918" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2919.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2919.JPG" alt="_DSC2919" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2920.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2920.JPG" alt="_DSC2920" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2921.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2921.JPG" alt="_DSC2921" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2922.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2922.JPG" alt="_DSC2922" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2923.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2923.JPG" alt="_DSC2923" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2924.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2924.JPG" alt="_DSC2924" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2925.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2925.JPG" alt="_DSC2925" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2926.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2926.JPG" alt="_DSC2926" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2927.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2927.JPG" alt="_DSC2927" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2928.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2928.JPG" alt="_DSC2928" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2929.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2929.JPG" alt="_DSC2929" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2931.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2931.JPG" alt="_DSC2931" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2932.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2932.JPG" alt="_DSC2932" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2933.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2933.JPG" alt="_DSC2933" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2934.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2934.JPG" alt="_DSC2934" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2935.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2935.JPG" alt="_DSC2935" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2936.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2936.JPG" alt="_DSC2936" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2938.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2938.JPG" alt="_DSC2938" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2941.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2941.JPG" alt="_DSC2941" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2943.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2943.JPG" alt="_DSC2943" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2944.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2944.JPG" alt="_DSC2944" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2945.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2945.JPG" alt="_DSC2945" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2946.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2946.JPG" alt="_DSC2946" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2947.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2947.JPG" alt="_DSC2947" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2948.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2948.JPG" alt="_DSC2948" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2950.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2950.JPG" alt="_DSC2950" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2951.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2951.JPG" alt="_DSC2951" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2953.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2953.JPG" alt="_DSC2953" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2954.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2954.JPG" alt="_DSC2954" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2955.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2955.JPG" alt="_DSC2955" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2956.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2956.JPG" alt="_DSC2956" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2957.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2957.JPG" alt="_DSC2957" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2958.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2958.JPG" alt="_DSC2958" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2959.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2959.JPG" alt="_DSC2959" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2960.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2960.JPG" alt="_DSC2960" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2961.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2961.JPG" alt="_DSC2961" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2962.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2962.JPG" alt="_DSC2962" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2963.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2963.JPG" alt="_DSC2963" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2965.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2965.JPG" alt="_DSC2965" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2966.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2966.JPG" alt="_DSC2966" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2967.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2967.JPG" alt="_DSC2967" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2968.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2968.JPG" alt="_DSC2968" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2969.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2969.JPG" alt="_DSC2969" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2970.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2970.JPG" alt="_DSC2970" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2971.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2971.JPG" alt="_DSC2971" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2972.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2972.JPG" alt="_DSC2972" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2973.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2973.JPG" alt="_DSC2973" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2974.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2974.JPG" alt="_DSC2974" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2975.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2975.JPG" alt="_DSC2975" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2976.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2976.JPG" alt="_DSC2976" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2977.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2977.JPG" alt="_DSC2977" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2978.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2978.JPG" alt="_DSC2978" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2986.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2986.JPG" alt="_DSC2986" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2987.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2987.JPG" alt="_DSC2987" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2988.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2988.JPG" alt="_DSC2988" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2989.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2989.JPG" alt="_DSC2989" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2990.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2990.JPG" alt="_DSC2990" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2991.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2991.JPG" alt="_DSC2991" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2992.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2992.JPG" alt="_DSC2992" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2993.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2993.JPG" alt="_DSC2993" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2994.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2994.JPG" alt="_DSC2994" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2995.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2995.JPG" alt="_DSC2995" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2998.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2998.JPG" alt="_DSC2998" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC2999.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC2999.JPG" alt="_DSC2999" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3000.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3000.JPG" alt="_DSC3000" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3001.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3001.JPG" alt="_DSC3001" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3002.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3002.JPG" alt="_DSC3002" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3003.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3003.JPG" alt="_DSC3003" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3004.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3004.JPG" alt="_DSC3004" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3005.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3005.JPG" alt="_DSC3005" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3006.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3006.JPG" alt="_DSC3006" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3007.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3007.JPG" alt="_DSC3007" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3008.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3008.JPG" alt="_DSC3008" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3009.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3009.JPG" alt="_DSC3009" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3010.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3010.JPG" alt="_DSC3010" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3011.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3011.JPG" alt="_DSC3011" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3012.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3012.JPG" alt="_DSC3012" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3013.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3013.JPG" alt="_DSC3013" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3015.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3015.JPG" alt="_DSC3015" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3016.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3016.JPG" alt="_DSC3016" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3017.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3017.JPG" alt="_DSC3017" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3018.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3018.JPG" alt="_DSC3018" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3019.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3019.JPG" alt="_DSC3019" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3020.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3020.JPG" alt="_DSC3020" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3021.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3021.JPG" alt="_DSC3021" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3023.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3023.JPG" alt="_DSC3023" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3024.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3024.JPG" alt="_DSC3024" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3025.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3025.JPG" alt="_DSC3025" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3026.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3026.JPG" alt="_DSC3026" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3027.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3027.JPG" alt="_DSC3027" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3028.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3028.JPG" alt="_DSC3028" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3029.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3029.JPG" alt="_DSC3029" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3030.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3030.JPG" alt="_DSC3030" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3031.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3031.JPG" alt="_DSC3031" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3033.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3033.JPG" alt="_DSC3033" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3034.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3034.JPG" alt="_DSC3034" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3035.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3035.JPG" alt="_DSC3035" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3036.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3036.JPG" alt="_DSC3036" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3037.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3037.JPG" alt="_DSC3037" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3038.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3038.JPG" alt="_DSC3038" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3039.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3039.JPG" alt="_DSC3039" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3040.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3040.JPG" alt="_DSC3040" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3042.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3042.JPG" alt="_DSC3042" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3043.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3043.JPG" alt="_DSC3043" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3044.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3044.JPG" alt="_DSC3044" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3045.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3045.JPG" alt="_DSC3045" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3046.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3046.JPG" alt="_DSC3046" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3047.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3047.JPG" alt="_DSC3047" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3048.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3048.JPG" alt="_DSC3048" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3049.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3049.JPG" alt="_DSC3049" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3050.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3050.JPG" alt="_DSC3050" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3051.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3051.JPG" alt="_DSC3051" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3052.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3052.JPG" alt="_DSC3052" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3053.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3053.JPG" alt="_DSC3053" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3054.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3054.JPG" alt="_DSC3054" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3055.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3055.JPG" alt="_DSC3055" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3056.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3056.JPG" alt="_DSC3056" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3057.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3057.JPG" alt="_DSC3057" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3058.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3058.JPG" alt="_DSC3058" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3063.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3063.JPG" alt="_DSC3063" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3064.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3064.JPG" alt="_DSC3064" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3067.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3067.JPG" alt="_DSC3067" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3068.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3068.JPG" alt="_DSC3068" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3069.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3069.JPG" alt="_DSC3069" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3070.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3070.JPG" alt="_DSC3070" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3071.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3071.JPG" alt="_DSC3071" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3072.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3072.JPG" alt="_DSC3072" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\HALLOWEEN/_DSC3073.JPG">
+                <img data-src="Q:\Selection\Prepa\HALLOWEEN/_DSC3073.JPG" alt="_DSC3073" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <!-- Add more photos as needed -->
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for Select All and Download Selected functionality
+        const selectAllBtn = document.getElementById('selectAll');
+        const downloadBtn = document.getElementById('downloadSelected');
+        const checkboxes = document.querySelectorAll('.checkbox');
+
+        selectAllBtn.addEventListener('click', () => {
+            checkboxes.forEach(checkbox => checkbox.checked = true);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const selectedPhotos = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            if (selectedPhotos.length === 0) {
+                alert('No photos selected for download.');
+                return;
+            }
+
+            selectedPhotos.forEach(photo => {
+                const link = document.createElement('a');
+                link.href = photo;
+                link.download = photo;
+                link.click();
+            });
+        });
+    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Contact: Yann Peillat | Email: yann.peillat@gmail.com | Phone: +33 (0) 6 41 38 92 80 | <a href="https://instagram.com/yannpeillat/">Instagram</a></p>
+            <p>&copy; 2024 YPPhotography. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Intersection Observer for lazy loading and fade-in effect
+        const images = document.querySelectorAll('.gallery img');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start loading the image only when it's about to come into view
+                    const image = entry.target;
+                    const imgSrc = image.getAttribute('data-src');
+
+                    if (imgSrc) {
+                        image.src = imgSrc; // Set the src attribute to load the image
+                        image.classList.add('loaded'); // Apply the 'loaded' class for opacity transition
+                        image.removeAttribute('data-src'); // Remove data-src to avoid loading again
+                    }
+                    observer.unobserve(image); // Stop observing once it's loaded
+                }
+            });
+        }, {
+            rootMargin: '500px 0px', // Trigger when 50px away from the viewport
+            threshold: 0.001 // Trigger when 0.1% of the image is visible
+        });
+
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    </script>
+
+</body>
+</html>

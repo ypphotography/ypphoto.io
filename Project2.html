@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YPPhotography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great Vibes">
+
+    <style>
+        /* General Styles */
+        body {
+            height: 100vh;
+            background-color: #181818;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 3;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3.5rem;
+            position: absolute;
+            top: 0;
+            width: 92%;
+            z-index: 10;
+            color: #fff;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5rem;
+	    font-size: 1.7rem;
+        }
+
+        .instagram-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+
+        .gallery h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: #fff;
+
+        }
+        .gallery h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            color: #fff;
+
+        }
+	.gallery {
+   	    padding: 5rem 2rem; /* Add padding for some spacing */
+   	    max-width: 100%; /* Prevent the gallery from exceeding the viewport width */
+   	    margin: auto;
+	}
+
+        .gallery-grid {
+            display: grid;
+    	    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); /* Adjust column count dynamically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%; /* Adjusts image width to fit the grid cell */
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Differentiation for large and tall images */
+        .gallery-item.large {
+            grid-column: span 2; /* Large images take two columns */
+            grid-row: span 0.8; /* Tall images take two rows */
+
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2; /* Tall images take two rows */
+            grid-column: span 2; /* Large images take two columns */
+
+        }
+
+        /* Checkboxes for image selection */
+        .checkbox {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        /* Actions container for buttons */
+        .actions {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .actions button {
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            background-color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">YPPhotography</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="Portfolio.html">Portfolio</a></li>
+                <li><a href="https://instagram.com/yannpeillat/"><img src="instagram-logo.png" alt="Instagram" class="instagram-icon"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h1>KFET DES ANCIENS</h1>
+        <h2>22/11/2024</h2>
+
+        <div class="actions">
+            <button id="selectAll">Select All</button>
+            <button id="downloadSelected">Download Selected</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3830.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3830.JPG" alt="_DSC3830" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3831.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3831.JPG" alt="_DSC3831" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3832.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3832.JPG" alt="_DSC3832" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3834.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3834.JPG" alt="_DSC3834" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3837.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3837.JPG" alt="_DSC3837" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3839.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3839.JPG" alt="_DSC3839" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3840.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3840.JPG" alt="_DSC3840" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3841.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3841.JPG" alt="_DSC3841" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3842.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3842.JPG" alt="_DSC3842" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3843.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3843.JPG" alt="_DSC3843" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3844.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3844.JPG" alt="_DSC3844" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3847.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3847.JPG" alt="_DSC3847" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3848.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3848.JPG" alt="_DSC3848" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3850.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3850.JPG" alt="_DSC3850" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3853.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3853.JPG" alt="_DSC3853" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3855.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3855.JPG" alt="_DSC3855" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3856.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3856.JPG" alt="_DSC3856" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3859.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3859.JPG" alt="_DSC3859" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3860.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3860.JPG" alt="_DSC3860" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3865.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3865.JPG" alt="_DSC3865" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3866.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3866.JPG" alt="_DSC3866" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3869.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3869.JPG" alt="_DSC3869" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3870.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3870.JPG" alt="_DSC3870" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3871.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3871.JPG" alt="_DSC3871" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3873.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3873.JPG" alt="_DSC3873" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3874.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3874.JPG" alt="_DSC3874" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3878.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3878.JPG" alt="_DSC3878" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3879.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3879.JPG" alt="_DSC3879" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3880.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3880.JPG" alt="_DSC3880" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3882.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3882.JPG" alt="_DSC3882" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3883.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3883.JPG" alt="_DSC3883" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3884.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3884.JPG" alt="_DSC3884" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3893.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3893.JPG" alt="_DSC3893" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3895.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3895.JPG" alt="_DSC3895" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3896.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3896.JPG" alt="_DSC3896" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3897.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3897.JPG" alt="_DSC3897" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3898.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3898.JPG" alt="_DSC3898" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3899.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3899.JPG" alt="_DSC3899" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3905.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3905.JPG" alt="_DSC3905" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3907.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3907.JPG" alt="_DSC3907" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3909.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3909.JPG" alt="_DSC3909" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3913.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3913.JPG" alt="_DSC3913" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3917.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3917.JPG" alt="_DSC3917" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3921.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3921.JPG" alt="_DSC3921" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3922.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3922.JPG" alt="_DSC3922" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3923.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3923.JPG" alt="_DSC3923" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3924.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3924.JPG" alt="_DSC3924" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3925.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3925.JPG" alt="_DSC3925" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3927.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3927.JPG" alt="_DSC3927" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3928.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3928.JPG" alt="_DSC3928" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3930.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3930.JPG" alt="_DSC3930" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3935.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3935.JPG" alt="_DSC3935" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3936.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3936.JPG" alt="_DSC3936" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3945.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3945.JPG" alt="_DSC3945" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3950.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3950.JPG" alt="_DSC3950" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3951.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3951.JPG" alt="_DSC3951" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3952.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3952.JPG" alt="_DSC3952" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3954.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3954.JPG" alt="_DSC3954" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3955.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3955.JPG" alt="_DSC3955" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3956.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3956.JPG" alt="_DSC3956" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3957.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3957.JPG" alt="_DSC3957" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3959.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3959.JPG" alt="_DSC3959" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3960.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3960.JPG" alt="_DSC3960" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3961.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3961.JPG" alt="_DSC3961" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3962.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3962.JPG" alt="_DSC3962" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3963.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3963.JPG" alt="_DSC3963" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3965.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3965.JPG" alt="_DSC3965" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3966.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3966.JPG" alt="_DSC3966" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3969.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3969.JPG" alt="_DSC3969" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3970.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3970.JPG" alt="_DSC3970" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3971.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3971.JPG" alt="_DSC3971" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3975.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3975.JPG" alt="_DSC3975" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3980.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3980.JPG" alt="_DSC3980" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3981.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3981.JPG" alt="_DSC3981" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3982.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3982.JPG" alt="_DSC3982" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3983.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3983.JPG" alt="_DSC3983" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3985.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3985.JPG" alt="_DSC3985" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3988.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3988.JPG" alt="_DSC3988" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3989.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3989.JPG" alt="_DSC3989" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3990.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3990.JPG" alt="_DSC3990" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3992.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3992.JPG" alt="_DSC3992" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3993.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3993.JPG" alt="_DSC3993" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3998.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC3998.JPG" alt="_DSC3998" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4001.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4001.JPG" alt="_DSC4001" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4004.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4004.JPG" alt="_DSC4004" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4006.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4006.JPG" alt="_DSC4006" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4011.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4011.JPG" alt="_DSC4011" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4013.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4013.JPG" alt="_DSC4013" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4014.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4014.JPG" alt="_DSC4014" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4015.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4015.JPG" alt="_DSC4015" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4018.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4018.JPG" alt="_DSC4018" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4019.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4019.JPG" alt="_DSC4019" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4021.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4021.JPG" alt="_DSC4021" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4022.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4022.JPG" alt="_DSC4022" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4025.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4025.JPG" alt="_DSC4025" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4027.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4027.JPG" alt="_DSC4027" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4029.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4029.JPG" alt="_DSC4029" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4030.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4030.JPG" alt="_DSC4030" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4031.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4031.JPG" alt="_DSC4031" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4033.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4033.JPG" alt="_DSC4033" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4034.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4034.JPG" alt="_DSC4034" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4036.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4036.JPG" alt="_DSC4036" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4039.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4039.JPG" alt="_DSC4039" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4042.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4042.JPG" alt="_DSC4042" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4045.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4045.JPG" alt="_DSC4045" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4048.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4048.JPG" alt="_DSC4048" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4049.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4049.JPG" alt="_DSC4049" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4058.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4058.JPG" alt="_DSC4058" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4060.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4060.JPG" alt="_DSC4060" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4062.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4062.JPG" alt="_DSC4062" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4066.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4066.JPG" alt="_DSC4066" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4073.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4073.JPG" alt="_DSC4073" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4074.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4074.JPG" alt="_DSC4074" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4079.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4079.JPG" alt="_DSC4079" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4080.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4080.JPG" alt="_DSC4080" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4086.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4086.JPG" alt="_DSC4086" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4087.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4087.JPG" alt="_DSC4087" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4092.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4092.JPG" alt="_DSC4092" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4094.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4094.JPG" alt="_DSC4094" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4097.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4097.JPG" alt="_DSC4097" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4099.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4099.JPG" alt="_DSC4099" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4100.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4100.JPG" alt="_DSC4100" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4102.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4102.JPG" alt="_DSC4102" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4103.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4103.JPG" alt="_DSC4103" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4106.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4106.JPG" alt="_DSC4106" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4107.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4107.JPG" alt="_DSC4107" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4109.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4109.JPG" alt="_DSC4109" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4110.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4110.JPG" alt="_DSC4110" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4112.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4112.JPG" alt="_DSC4112" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4115.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4115.JPG" alt="_DSC4115" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4117.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4117.JPG" alt="_DSC4117" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4120.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4120.JPG" alt="_DSC4120" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4122.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4122.JPG" alt="_DSC4122" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4124.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4124.JPG" alt="_DSC4124" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4125.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4125.JPG" alt="_DSC4125" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4127.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4127.JPG" alt="_DSC4127" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4128.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4128.JPG" alt="_DSC4128" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4129.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4129.JPG" alt="_DSC4129" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4130.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4130.JPG" alt="_DSC4130" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4133.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4133.JPG" alt="_DSC4133" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4141.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4141.JPG" alt="_DSC4141" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4144.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4144.JPG" alt="_DSC4144" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4145.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4145.JPG" alt="_DSC4145" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4147.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4147.JPG" alt="_DSC4147" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4148.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4148.JPG" alt="_DSC4148" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4149.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4149.JPG" alt="_DSC4149" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4150.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4150.JPG" alt="_DSC4150" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4151.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4151.JPG" alt="_DSC4151" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4157.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4157.JPG" alt="_DSC4157" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4161.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4161.JPG" alt="_DSC4161" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4165.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4165.JPG" alt="_DSC4165" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4166.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4166.JPG" alt="_DSC4166" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4170.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4170.JPG" alt="_DSC4170" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4173.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4173.JPG" alt="_DSC4173" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4179.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4179.JPG" alt="_DSC4179" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4181.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4181.JPG" alt="_DSC4181" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4182.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4182.JPG" alt="_DSC4182" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4183.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4183.JPG" alt="_DSC4183" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4189.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4189.JPG" alt="_DSC4189" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4190.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4190.JPG" alt="_DSC4190" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4192.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4192.JPG" alt="_DSC4192" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4194.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4194.JPG" alt="_DSC4194" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4196.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4196.JPG" alt="_DSC4196" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4198.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4198.JPG" alt="_DSC4198" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4199.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4199.JPG" alt="_DSC4199" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4200.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4200.JPG" alt="_DSC4200" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4202.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4202.JPG" alt="_DSC4202" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4205.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4205.JPG" alt="_DSC4205" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4209.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4209.JPG" alt="_DSC4209" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4210.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4210.JPG" alt="_DSC4210" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4211.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4211.JPG" alt="_DSC4211" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4212.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4212.JPG" alt="_DSC4212" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4215.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4215.JPG" alt="_DSC4215" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4216.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4216.JPG" alt="_DSC4216" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4217.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4217.JPG" alt="_DSC4217" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4219.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4219.JPG" alt="_DSC4219" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4220.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4220.JPG" alt="_DSC4220" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4223.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4223.JPG" alt="_DSC4223" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4228.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4228.JPG" alt="_DSC4228" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4230.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4230.JPG" alt="_DSC4230" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4231.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4231.JPG" alt="_DSC4231" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4232.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4232.JPG" alt="_DSC4232" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4233.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4233.JPG" alt="_DSC4233" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4242.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4242.JPG" alt="_DSC4242" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4244.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4244.JPG" alt="_DSC4244" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4248.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4248.JPG" alt="_DSC4248" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4249.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4249.JPG" alt="_DSC4249" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4250.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4250.JPG" alt="_DSC4250" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4252.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4252.JPG" alt="_DSC4252" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4253.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4253.JPG" alt="_DSC4253" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4255.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4255.JPG" alt="_DSC4255" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4257.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4257.JPG" alt="_DSC4257" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4259.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4259.JPG" alt="_DSC4259" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4269.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4269.JPG" alt="_DSC4269" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4271.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4271.JPG" alt="_DSC4271" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4272.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4272.JPG" alt="_DSC4272" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4273.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4273.JPG" alt="_DSC4273" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4274.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4274.JPG" alt="_DSC4274" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4276.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4276.JPG" alt="_DSC4276" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4277.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4277.JPG" alt="_DSC4277" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4282.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4282.JPG" alt="_DSC4282" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4283.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4283.JPG" alt="_DSC4283" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4284.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4284.JPG" alt="_DSC4284" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4288.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4288.JPG" alt="_DSC4288" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4289.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4289.JPG" alt="_DSC4289" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4290.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4290.JPG" alt="_DSC4290" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4291.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4291.JPG" alt="_DSC4291" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4292.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4292.JPG" alt="_DSC4292" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4294.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4294.JPG" alt="_DSC4294" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4296.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4296.JPG" alt="_DSC4296" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4297.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4297.JPG" alt="_DSC4297" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4298.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4298.JPG" alt="_DSC4298" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4302.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4302.JPG" alt="_DSC4302" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4304.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4304.JPG" alt="_DSC4304" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4305.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4305.JPG" alt="_DSC4305" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4307.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4307.JPG" alt="_DSC4307" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4308.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4308.JPG" alt="_DSC4308" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4309.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4309.JPG" alt="_DSC4309" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4310.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4310.JPG" alt="_DSC4310" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4311.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4311.JPG" alt="_DSC4311" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4315.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4315.JPG" alt="_DSC4315" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4316.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4316.JPG" alt="_DSC4316" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4317.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4317.JPG" alt="_DSC4317" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4319.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4319.JPG" alt="_DSC4319" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4320.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4320.JPG" alt="_DSC4320" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4322.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4322.JPG" alt="_DSC4322" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4331.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4331.JPG" alt="_DSC4331" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4332.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4332.JPG" alt="_DSC4332" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4333.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4333.JPG" alt="_DSC4333" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4334.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4334.JPG" alt="_DSC4334" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4335.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4335.JPG" alt="_DSC4335" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4336.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4336.JPG" alt="_DSC4336" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4337.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4337.JPG" alt="_DSC4337" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4345.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4345.JPG" alt="_DSC4345" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4346.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4346.JPG" alt="_DSC4346" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4347.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4347.JPG" alt="_DSC4347" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4349.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4349.JPG" alt="_DSC4349" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4350.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4350.JPG" alt="_DSC4350" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4352.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4352.JPG" alt="_DSC4352" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4355.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4355.JPG" alt="_DSC4355" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4356.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4356.JPG" alt="_DSC4356" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4358.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4358.JPG" alt="_DSC4358" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4359.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4359.JPG" alt="_DSC4359" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4360.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4360.JPG" alt="_DSC4360" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4363.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4363.JPG" alt="_DSC4363" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4366.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4366.JPG" alt="_DSC4366" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4367.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4367.JPG" alt="_DSC4367" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4368.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4368.JPG" alt="_DSC4368" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4371.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4371.JPG" alt="_DSC4371" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4374.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4374.JPG" alt="_DSC4374" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4375.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4375.JPG" alt="_DSC4375" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4382.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4382.JPG" alt="_DSC4382" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4383.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4383.JPG" alt="_DSC4383" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4384.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4384.JPG" alt="_DSC4384" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4386.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4386.JPG" alt="_DSC4386" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4387.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4387.JPG" alt="_DSC4387" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4390.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4390.JPG" alt="_DSC4390" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4391.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4391.JPG" alt="_DSC4391" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4394.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4394.JPG" alt="_DSC4394" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4395.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4395.JPG" alt="_DSC4395" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4397.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4397.JPG" alt="_DSC4397" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4399.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4399.JPG" alt="_DSC4399" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4402.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4402.JPG" alt="_DSC4402" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4403.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4403.JPG" alt="_DSC4403" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4404.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4404.JPG" alt="_DSC4404" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4405.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4405.JPG" alt="_DSC4405" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4406.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4406.JPG" alt="_DSC4406" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4408.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4408.JPG" alt="_DSC4408" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4410.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4410.JPG" alt="_DSC4410" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4414.JPG">
+                <img data-src="Q:\Selection\Prepa\KFET DES ANCIENS/_DSC4414.JPG" alt="_DSC4414" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <!-- Add more photos as needed -->
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for Select All and Download Selected functionality
+        const selectAllBtn = document.getElementById('selectAll');
+        const downloadBtn = document.getElementById('downloadSelected');
+        const checkboxes = document.querySelectorAll('.checkbox');
+
+        selectAllBtn.addEventListener('click', () => {
+            checkboxes.forEach(checkbox => checkbox.checked = true);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const selectedPhotos = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            if (selectedPhotos.length === 0) {
+                alert('No photos selected for download.');
+                return;
+            }
+
+            selectedPhotos.forEach(photo => {
+                const link = document.createElement('a');
+                link.href = photo;
+                link.download = photo;
+                link.click();
+            });
+        });
+    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Contact: Yann Peillat | Email: yann.peillat@gmail.com | Phone: +33 (0) 6 41 38 92 80 | <a href="https://instagram.com/yannpeillat/">Instagram</a></p>
+            <p>&copy; 2024 YPPhotography. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Intersection Observer for lazy loading and fade-in effect
+        const images = document.querySelectorAll('.gallery img');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start loading the image only when it's about to come into view
+                    const image = entry.target;
+                    const imgSrc = image.getAttribute('data-src');
+
+                    if (imgSrc) {
+                        image.src = imgSrc; // Set the src attribute to load the image
+                        image.classList.add('loaded'); // Apply the 'loaded' class for opacity transition
+                        image.removeAttribute('data-src'); // Remove data-src to avoid loading again
+                    }
+                    observer.unobserve(image); // Stop observing once it's loaded
+                }
+            });
+        }, {
+            rootMargin: '500px 0px', // Trigger when 50px away from the viewport
+            threshold: 0.001 // Trigger when 0.1% of the image is visible
+        });
+
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    </script>
+
+</body>
+</html>

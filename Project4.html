@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YPPhotography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great Vibes">
+
+    <style>
+        /* General Styles */
+        body {
+            height: 100vh;
+            background-color: #181818;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 3;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3.5rem;
+            position: absolute;
+            top: 0;
+            width: 92%;
+            z-index: 10;
+            color: #fff;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5rem;
+	    font-size: 1.7rem;
+        }
+
+        .instagram-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+
+        .gallery h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: #fff;
+
+        }
+        .gallery h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            color: #fff;
+
+        }
+	.gallery {
+   	    padding: 5rem 2rem; /* Add padding for some spacing */
+   	    max-width: 100%; /* Prevent the gallery from exceeding the viewport width */
+   	    margin: auto;
+	}
+
+        .gallery-grid {
+            display: grid;
+    	    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); /* Adjust column count dynamically */
+            gap: 10px; /* Smaller gap for compact layout */
+        }
+
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%; /* Adjusts image width to fit the grid cell */
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Differentiation for large and tall images */
+        .gallery-item.large {
+            grid-column: span 2; /* Large images take two columns */
+            grid-row: span 0.8; /* Tall images take two rows */
+
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2; /* Tall images take two rows */
+            grid-column: span 2; /* Large images take two columns */
+
+        }
+
+        /* Checkboxes for image selection */
+        .checkbox {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        /* Actions container for buttons */
+        .actions {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .actions button {
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            background-color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">YPPhotography</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="Portfolio.html">Portfolio</a></li>
+                <li><a href="https://instagram.com/yannpeillat/"><img src="instagram-logo.png" alt="Instagram" class="instagram-icon"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h1>6H D'IMOLA</h1>
+        <h2>21/04/2024</h2>
+
+        <div class="actions">
+            <button id="selectAll">Select All</button>
+            <button id="downloadSelected">Download Selected</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/20240418_100537750_iOS.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/20240418_100537750_iOS.jpg" alt="20240418_100537750_iOS" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/20240418_102941009_iOS.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/20240418_102941009_iOS.jpg" alt="20240418_102941009_iOS" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_0042.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_0042.JPG" alt="DSC_0042" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1792 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1792 - Copy.jpg" alt="DSC_1792 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1804 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1804 - Copy.jpg" alt="DSC_1804 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1841 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1841 - Copy.jpg" alt="DSC_1841 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1841.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1841.JPG" alt="DSC_1841" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1968 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1968 - Copy.jpg" alt="DSC_1968 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1969 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1969 - Copy.JPG" alt="DSC_1969 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1969.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1969.JPG" alt="DSC_1969" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1985 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1985 - Copy.JPG" alt="DSC_1985 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1985.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1985.JPG" alt="DSC_1985" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1986 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1986 - Copy.jpg" alt="DSC_1986 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_1986.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_1986.JPG" alt="DSC_1986" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2030 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2030 - Copy.JPG" alt="DSC_2030 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2030.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2030.JPG" alt="DSC_2030" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2043 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2043 - Copy.JPG" alt="DSC_2043 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2043.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2043.JPG" alt="DSC_2043" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2046 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2046 - Copy.JPG" alt="DSC_2046 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2046.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2046.JPG" alt="DSC_2046" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2080 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2080 - Copy.JPG" alt="DSC_2080 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2080.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2080.JPG" alt="DSC_2080" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2083 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2083 - Copy.jpg" alt="DSC_2083 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2084 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2084 - Copy.JPG" alt="DSC_2084 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2084.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2084.JPG" alt="DSC_2084" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2089 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2089 - Copy.JPG" alt="DSC_2089 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2089.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2089.JPG" alt="DSC_2089" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2099 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2099 - Copy.jpg" alt="DSC_2099 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2099.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2099.JPG" alt="DSC_2099" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2123 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2123 - Copy.JPG" alt="DSC_2123 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2123.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2123.JPG" alt="DSC_2123" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2128 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2128 - Copy.JPG" alt="DSC_2128 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2128.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2128.JPG" alt="DSC_2128" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2185 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2185 - Copy.JPG" alt="DSC_2185 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2185.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2185.JPG" alt="DSC_2185" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2229 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2229 - Copy.JPG" alt="DSC_2229 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2229.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2229.JPG" alt="DSC_2229" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2257 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2257 - Copy.JPG" alt="DSC_2257 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2257.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2257.JPG" alt="DSC_2257" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2279 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2279 - Copy.jpg" alt="DSC_2279 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2279.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2279.JPG" alt="DSC_2279" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2289 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2289 - Copy.JPG" alt="DSC_2289 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2289.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2289.JPG" alt="DSC_2289" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2305 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2305 - Copy.JPG" alt="DSC_2305 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2305.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2305.JPG" alt="DSC_2305" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2317 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2317 - Copy.jpg" alt="DSC_2317 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2317.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2317.JPG" alt="DSC_2317" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2327 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2327 - Copy.JPG" alt="DSC_2327 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2327.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2327.JPG" alt="DSC_2327" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2332 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2332 - Copy.JPG" alt="DSC_2332 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2332.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2332.JPG" alt="DSC_2332" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2333 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2333 - Copy.JPG" alt="DSC_2333 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2333.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2333.JPG" alt="DSC_2333" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2415 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2415 - Copy.JPG" alt="DSC_2415 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2415.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2415.JPG" alt="DSC_2415" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2448 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2448 - Copy.JPG" alt="DSC_2448 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2448.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2448.JPG" alt="DSC_2448" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2480 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2480 - Copy.JPG" alt="DSC_2480 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2480.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2480.JPG" alt="DSC_2480" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2606 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2606 - Copy.JPG" alt="DSC_2606 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2644 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2644 - Copy.JPG" alt="DSC_2644 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2701 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2701 - Copy.jpg" alt="DSC_2701 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2721 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2721 - Copy.JPG" alt="DSC_2721 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2790 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2790 - Copy.JPG" alt="DSC_2790 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2819 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2819 - Copy.JPG" alt="DSC_2819 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2856 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2856 - Copy.JPG" alt="DSC_2856 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2867 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2867 - Copy.JPG" alt="DSC_2867 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2903 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2903 - Copy.JPG" alt="DSC_2903 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2935 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2935 - Copy.JPG" alt="DSC_2935 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2964 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2964 - Copy.JPG" alt="DSC_2964 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_2986 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_2986 - Copy.JPG" alt="DSC_2986 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3012 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3012 - Copy.jpg" alt="DSC_3012 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3062 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3062 - Copy.JPG" alt="DSC_3062 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3086 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3086 - Copy.JPG" alt="DSC_3086 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3123 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3123 - Copy.JPG" alt="DSC_3123 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3147 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3147 - Copy.JPG" alt="DSC_3147 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3181 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3181 - Copy.JPG" alt="DSC_3181 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3204 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3204 - Copy.jpg" alt="DSC_3204 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3268 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3268 - Copy.jpg" alt="DSC_3268 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3315 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3315 - Copy.JPG" alt="DSC_3315 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3357 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3357 - Copy.JPG" alt="DSC_3357 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3502.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3502.jpg" alt="DSC_3502" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3532 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3532 - Copy.JPG" alt="DSC_3532 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3598 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3598 - Copy.JPG" alt="DSC_3598 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3610 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3610 - Copy.JPG" alt="DSC_3610 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3631 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3631 - Copy.JPG" alt="DSC_3631 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3701 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3701 - Copy.jpg" alt="DSC_3701 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3781 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3781 - Copy.JPG" alt="DSC_3781 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3786 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3786 - Copy.JPG" alt="DSC_3786 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3805 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3805 - Copy.JPG" alt="DSC_3805 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3817 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3817 - Copy.JPG" alt="DSC_3817 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3829 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3829 - Copy.JPG" alt="DSC_3829 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3843 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3843 - Copy.JPG" alt="DSC_3843 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3860 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3860 - Copy.JPG" alt="DSC_3860 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3906 - Copy - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3906 - Copy - Copy.jpg" alt="DSC_3906 - Copy - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3906 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3906 - Copy.jpg" alt="DSC_3906 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3917 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3917 - Copy.JPG" alt="DSC_3917 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_3949 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_3949 - Copy.JPG" alt="DSC_3949 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4011 - Copy - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4011 - Copy - Copy.jpg" alt="DSC_4011 - Copy - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4011 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4011 - Copy.jpg" alt="DSC_4011 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4060 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4060 - Copy.JPG" alt="DSC_4060 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4081 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4081 - Copy.JPG" alt="DSC_4081 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4128 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4128 - Copy.JPG" alt="DSC_4128 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4149 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4149 - Copy.JPG" alt="DSC_4149 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4195 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4195 - Copy.jpg" alt="DSC_4195 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4238 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4238 - Copy.JPG" alt="DSC_4238 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4245 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4245 - Copy.JPG" alt="DSC_4245 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4260 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4260 - Copy.JPG" alt="DSC_4260 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4428 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4428 - Copy.JPG" alt="DSC_4428 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4438 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4438 - Copy.JPG" alt="DSC_4438 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4489 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4489 - Copy.JPG" alt="DSC_4489 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4531.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4531.JPG" alt="DSC_4531" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4533.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4533.JPG" alt="DSC_4533" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4538.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4538.JPG" alt="DSC_4538" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4549 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4549 - Copy.JPG" alt="DSC_4549 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4555 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4555 - Copy.JPG" alt="DSC_4555 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4561.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4561.JPG" alt="DSC_4561" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4589 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4589 - Copy.JPG" alt="DSC_4589 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4591.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4591.jpg" alt="DSC_4591" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4618 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4618 (2).JPG" alt="DSC_4618 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4619 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4619 - Copy.JPG" alt="DSC_4619 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4620 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4620 (2).JPG" alt="DSC_4620 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4621 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4621 (2).JPG" alt="DSC_4621 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4623 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4623 (2).JPG" alt="DSC_4623 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4626 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4626 (2).JPG" alt="DSC_4626 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4627 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4627 (2).JPG" alt="DSC_4627 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4628 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4628 (2).JPG" alt="DSC_4628 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4629 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4629 (2).JPG" alt="DSC_4629 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4632 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4632 (2).JPG" alt="DSC_4632 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4633 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4633 (2).JPG" alt="DSC_4633 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4634 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4634 (2).JPG" alt="DSC_4634 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4637 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4637 (2).JPG" alt="DSC_4637 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4639 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4639 (2).JPG" alt="DSC_4639 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4646 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4646 (2).JPG" alt="DSC_4646 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4648 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4648 (2).JPG" alt="DSC_4648 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4652 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4652 (2).JPG" alt="DSC_4652 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4653 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4653 (2).JPG" alt="DSC_4653 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4655 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4655 (2).JPG" alt="DSC_4655 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4663 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4663 (2).JPG" alt="DSC_4663 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4666 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4666 (2).JPG" alt="DSC_4666 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4667 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4667 (2).JPG" alt="DSC_4667 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4671 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4671 (2).JPG" alt="DSC_4671 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4672 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4672 (2).JPG" alt="DSC_4672 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4673 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4673 (2).JPG" alt="DSC_4673 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4674 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4674 (2).JPG" alt="DSC_4674 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4675 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4675 (2).JPG" alt="DSC_4675 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4677 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4677 (2).JPG" alt="DSC_4677 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4679 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4679 (2).JPG" alt="DSC_4679 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4682 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4682 (2).JPG" alt="DSC_4682 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4684 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4684 (2).JPG" alt="DSC_4684 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4687 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4687 (2).JPG" alt="DSC_4687 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4689 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4689 (2).JPG" alt="DSC_4689 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4691 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4691 (2).JPG" alt="DSC_4691 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4692 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4692 (2).JPG" alt="DSC_4692 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4693 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4693 (2).JPG" alt="DSC_4693 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4694 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4694 (2).JPG" alt="DSC_4694 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4695 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4695 (2).JPG" alt="DSC_4695 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4697 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4697 (2).JPG" alt="DSC_4697 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4698 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4698 (2).JPG" alt="DSC_4698 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4699 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4699 (2).JPG" alt="DSC_4699 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4700 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4700 (2).JPG" alt="DSC_4700 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4702 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4702 (2).JPG" alt="DSC_4702 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4704 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4704 (2).JPG" alt="DSC_4704 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4705 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4705 (2).JPG" alt="DSC_4705 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4706 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4706 (2).JPG" alt="DSC_4706 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4707 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4707 (2).JPG" alt="DSC_4707 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4708 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4708 (2).JPG" alt="DSC_4708 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4712 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4712 (2).JPG" alt="DSC_4712 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4714 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4714 (2).JPG" alt="DSC_4714 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4714.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4714.jpg" alt="DSC_4714" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4719 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4719 (2).JPG" alt="DSC_4719 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4720 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4720 (2).JPG" alt="DSC_4720 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4721 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4721 (2).JPG" alt="DSC_4721 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4723 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4723 (2).JPG" alt="DSC_4723 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4724 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4724 (2).JPG" alt="DSC_4724 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4725 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4725 (2).JPG" alt="DSC_4725 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4726 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4726 (2).JPG" alt="DSC_4726 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4729 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4729 (2).JPG" alt="DSC_4729 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4730 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4730 (2).JPG" alt="DSC_4730 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4735 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4735 - Copy.JPG" alt="DSC_4735 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4738 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4738 (2).JPG" alt="DSC_4738 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4739 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4739 (2).JPG" alt="DSC_4739 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4744 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4744 (2).JPG" alt="DSC_4744 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4750 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4750 (2).JPG" alt="DSC_4750 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4769 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4769 - Copy.JPG" alt="DSC_4769 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4774 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4774 (2).JPG" alt="DSC_4774 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4785 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4785 (2).JPG" alt="DSC_4785 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4793 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4793 (2).JPG" alt="DSC_4793 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4797 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4797 - Copy.JPG" alt="DSC_4797 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4804 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4804 - Copy.JPG" alt="DSC_4804 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4807 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4807 - Copy.JPG" alt="DSC_4807 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4810 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4810 (2).JPG" alt="DSC_4810 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4812 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4812 (2).JPG" alt="DSC_4812 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4820 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4820 (2).JPG" alt="DSC_4820 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4822 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4822 (2).JPG" alt="DSC_4822 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4824 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4824 (2).JPG" alt="DSC_4824 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4825 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4825 (2).JPG" alt="DSC_4825 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4827 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4827 (2).JPG" alt="DSC_4827 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4828 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4828 (2).JPG" alt="DSC_4828 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4829 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4829 (2).JPG" alt="DSC_4829 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4831 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4831 (2).JPG" alt="DSC_4831 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4832 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4832 (2).JPG" alt="DSC_4832 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4834 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4834 (2).JPG" alt="DSC_4834 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4836 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4836 (2).JPG" alt="DSC_4836 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4840 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4840 (2).JPG" alt="DSC_4840 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4841 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4841 (2).JPG" alt="DSC_4841 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4841 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4841 - Copy.JPG" alt="DSC_4841 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4842 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4842 (2).JPG" alt="DSC_4842 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4845 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4845 (2).JPG" alt="DSC_4845 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4847 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4847 (2).JPG" alt="DSC_4847 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4848 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4848 (2).JPG" alt="DSC_4848 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4849 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4849 - Copy.JPG" alt="DSC_4849 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4850 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4850 (2).JPG" alt="DSC_4850 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4852 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4852 (2).JPG" alt="DSC_4852 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4853 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4853 (2).JPG" alt="DSC_4853 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4854 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4854 - Copy.JPG" alt="DSC_4854 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4859 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4859 (2).JPG" alt="DSC_4859 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4860 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4860 (2).JPG" alt="DSC_4860 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4862 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4862 (2).JPG" alt="DSC_4862 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4864 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4864 (2).JPG" alt="DSC_4864 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4868 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4868 (2).JPG" alt="DSC_4868 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4869 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4869 (2).JPG" alt="DSC_4869 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4870 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4870 (2).JPG" alt="DSC_4870 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4871 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4871 (2).JPG" alt="DSC_4871 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4872 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4872 (2).JPG" alt="DSC_4872 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4873 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4873 (2).JPG" alt="DSC_4873 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4874 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4874 (2).JPG" alt="DSC_4874 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4875 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4875 (2).JPG" alt="DSC_4875 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4875 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4875 - Copy.JPG" alt="DSC_4875 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4880 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4880 (2).JPG" alt="DSC_4880 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4881 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4881 (2).JPG" alt="DSC_4881 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4881 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4881 - Copy.JPG" alt="DSC_4881 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4886 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4886 (2).JPG" alt="DSC_4886 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4887 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4887 (2).JPG" alt="DSC_4887 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4888 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4888 (2).JPG" alt="DSC_4888 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4890 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4890 (2).JPG" alt="DSC_4890 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4892 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4892 (2).JPG" alt="DSC_4892 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4894 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4894 (2).JPG" alt="DSC_4894 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4895 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4895 - Copy.JPG" alt="DSC_4895 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4896 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4896 (2).JPG" alt="DSC_4896 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4897 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4897 (2).JPG" alt="DSC_4897 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4904 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4904 (2).JPG" alt="DSC_4904 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4905 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4905 (2).JPG" alt="DSC_4905 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4908 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4908 (2).JPG" alt="DSC_4908 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4910 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4910 (2).JPG" alt="DSC_4910 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4911 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4911 (2).JPG" alt="DSC_4911 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4912 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4912 (2).JPG" alt="DSC_4912 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4913 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4913 (2).JPG" alt="DSC_4913 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4914 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4914 (2).JPG" alt="DSC_4914 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4915 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4915 (2).JPG" alt="DSC_4915 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4917 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4917 (2).JPG" alt="DSC_4917 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4917 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4917 - Copy.JPG" alt="DSC_4917 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4919 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4919 (2).JPG" alt="DSC_4919 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4920 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4920 (2).JPG" alt="DSC_4920 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4921 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4921 (2).JPG" alt="DSC_4921 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4922 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4922 (2).JPG" alt="DSC_4922 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4922 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4922 - Copy.jpg" alt="DSC_4922 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4925 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4925 (2).JPG" alt="DSC_4925 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4927 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4927 (2).JPG" alt="DSC_4927 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4928 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4928 (2).JPG" alt="DSC_4928 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4931 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4931 (2).JPG" alt="DSC_4931 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4933 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4933 (2).JPG" alt="DSC_4933 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4936 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4936 (2).JPG" alt="DSC_4936 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4938 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4938 (2).JPG" alt="DSC_4938 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4939 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4939 (2).JPG" alt="DSC_4939 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4940 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4940 (2).JPG" alt="DSC_4940 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4941 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4941 (2).JPG" alt="DSC_4941 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4942 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4942 (2).JPG" alt="DSC_4942 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4944 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4944 (2).JPG" alt="DSC_4944 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4945 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4945 (2).JPG" alt="DSC_4945 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4948 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4948 (2).JPG" alt="DSC_4948 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4954 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4954 (2).JPG" alt="DSC_4954 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4954.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4954.jpg" alt="DSC_4954" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4964 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4964 (2).JPG" alt="DSC_4964 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4965 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4965 (2).JPG" alt="DSC_4965 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4967 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4967 (2).JPG" alt="DSC_4967 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4969 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4969 (2).JPG" alt="DSC_4969 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4972 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4972 (2).JPG" alt="DSC_4972 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4973 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4973 (2).JPG" alt="DSC_4973 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4977 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4977 (2).JPG" alt="DSC_4977 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4978 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4978 (2).JPG" alt="DSC_4978 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4981 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4981 (2).JPG" alt="DSC_4981 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4982 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4982 (2).JPG" alt="DSC_4982 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4983 (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4983 (2).JPG" alt="DSC_4983 (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_4985 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_4985 - Copy.JPG" alt="DSC_4985 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5037 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5037 - Copy.JPG" alt="DSC_5037 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5171 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5171 - Copy.jpg" alt="DSC_5171 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5263 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5263 - Copy.JPG" alt="DSC_5263 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5347 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5347 - Copy.JPG" alt="DSC_5347 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5396 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5396 - Copy.JPG" alt="DSC_5396 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5398 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5398 - Copy.JPG" alt="DSC_5398 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5445 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5445 - Copy.JPG" alt="DSC_5445 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5464 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5464 - Copy.JPG" alt="DSC_5464 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5465 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5465 - Copy.JPG" alt="DSC_5465 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5472 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5472 - Copy.JPG" alt="DSC_5472 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5480 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5480 - Copy.jpg" alt="DSC_5480 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5512 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5512 - Copy.JPG" alt="DSC_5512 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5545 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5545 - Copy.JPG" alt="DSC_5545 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5553 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5553 - Copy.JPG" alt="DSC_5553 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5558 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5558 - Copy.JPG" alt="DSC_5558 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5589 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5589 - Copy.JPG" alt="DSC_5589 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5726 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5726 - Copy.JPG" alt="DSC_5726 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5741 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5741 - Copy.JPG" alt="DSC_5741 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5766 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5766 - Copy.JPG" alt="DSC_5766 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5773 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5773 - Copy.JPG" alt="DSC_5773 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5834 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5834 - Copy.JPG" alt="DSC_5834 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5860 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5860 - Copy.jpg" alt="DSC_5860 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5864 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5864 - Copy.JPG" alt="DSC_5864 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5869 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5869 - Copy.JPG" alt="DSC_5869 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5919 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5919 - Copy.jpg" alt="DSC_5919 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5925 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5925 - Copy.JPG" alt="DSC_5925 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5943 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5943 - Copy.jpg" alt="DSC_5943 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_5990 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_5990 - Copy.jpg" alt="DSC_5990 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6001 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6001 - Copy.JPG" alt="DSC_6001 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6005 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6005 - Copy.JPG" alt="DSC_6005 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6015 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6015 - Copy.JPG" alt="DSC_6015 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6035 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6035 - Copy.JPG" alt="DSC_6035 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6043 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6043 - Copy.JPG" alt="DSC_6043 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6050 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6050 - Copy.JPG" alt="DSC_6050 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6063 - Copy - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6063 - Copy - Copy.jpg" alt="DSC_6063 - Copy - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6063 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6063 - Copy.JPG" alt="DSC_6063 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6065 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6065 - Copy.JPG" alt="DSC_6065 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6066 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6066 - Copy.JPG" alt="DSC_6066 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6074 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6074 - Copy.JPG" alt="DSC_6074 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6075 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6075 - Copy.JPG" alt="DSC_6075 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6081 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6081 - Copy.JPG" alt="DSC_6081 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6092 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6092 - Copy.JPG" alt="DSC_6092 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6106 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6106 - Copy.jpg" alt="DSC_6106 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6107 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6107 - Copy.JPG" alt="DSC_6107 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6137 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6137 - Copy.JPG" alt="DSC_6137 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6147 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6147 - Copy.JPG" alt="DSC_6147 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6150 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6150 - Copy.JPG" alt="DSC_6150 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6151 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6151 - Copy.jpg" alt="DSC_6151 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6164 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6164 - Copy.JPG" alt="DSC_6164 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6180 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6180 - Copy.JPG" alt="DSC_6180 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6210 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6210 - Copy.JPG" alt="DSC_6210 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6217 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6217 - Copy.JPG" alt="DSC_6217 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6231 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6231 - Copy.JPG" alt="DSC_6231 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6267 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6267 - Copy.JPG" alt="DSC_6267 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6301 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6301 - Copy.JPG" alt="DSC_6301 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6302 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6302 - Copy.JPG" alt="DSC_6302 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6307 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6307 - Copy.JPG" alt="DSC_6307 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6322 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6322 - Copy.JPG" alt="DSC_6322 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6340 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6340 - Copy.JPG" alt="DSC_6340 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6350 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6350 - Copy.JPG" alt="DSC_6350 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6359 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6359 - Copy.JPG" alt="DSC_6359 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6373 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6373 - Copy.JPG" alt="DSC_6373 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6403 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6403 - Copy.JPG" alt="DSC_6403 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6447 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6447 - Copy.JPG" alt="DSC_6447 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6469 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6469 - Copy.JPG" alt="DSC_6469 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6491 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6491 - Copy.JPG" alt="DSC_6491 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6535 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6535 - Copy.jpg" alt="DSC_6535 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6569 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6569 - Copy.JPG" alt="DSC_6569 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6580 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6580 - Copy.JPG" alt="DSC_6580 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6621 - Copy - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6621 - Copy - Copy.jpg" alt="DSC_6621 - Copy - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6621 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6621 - Copy.JPG" alt="DSC_6621 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6629 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6629 - Copy.JPG" alt="DSC_6629 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6657 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6657 - Copy.JPG" alt="DSC_6657 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6664 - Copy - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6664 - Copy - Copy.jpg" alt="DSC_6664 - Copy - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6664 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6664 - Copy.JPG" alt="DSC_6664 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6679 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6679 - Copy.JPG" alt="DSC_6679 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6713 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6713 - Copy.JPG" alt="DSC_6713 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6721 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6721 - Copy.JPG" alt="DSC_6721 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6727 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6727 - Copy.jpg" alt="DSC_6727 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6733 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6733 - Copy.JPG" alt="DSC_6733 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6743 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6743 - Copy.JPG" alt="DSC_6743 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6752 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6752 - Copy.JPG" alt="DSC_6752 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6756 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6756 - Copy.JPG" alt="DSC_6756 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6763 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6763 - Copy.JPG" alt="DSC_6763 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6784 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6784 - Copy.JPG" alt="DSC_6784 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6803 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6803 - Copy.jpg" alt="DSC_6803 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6816 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6816 - Copy.JPG" alt="DSC_6816 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6818 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6818 - Copy.JPG" alt="DSC_6818 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6830 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6830 - Copy.JPG" alt="DSC_6830 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6839 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6839 - Copy.JPG" alt="DSC_6839 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6841.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6841.jpg" alt="DSC_6841" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6861 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6861 - Copy.JPG" alt="DSC_6861 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6876 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6876 - Copy.JPG" alt="DSC_6876 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6928 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6928 - Copy.JPG" alt="DSC_6928 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6950 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6950 - Copy.JPG" alt="DSC_6950 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6959 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6959 - Copy.JPG" alt="DSC_6959 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_6990 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_6990 - Copy.JPG" alt="DSC_6990 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7004 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7004 - Copy.jpg" alt="DSC_7004 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7010 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7010 - Copy.JPG" alt="DSC_7010 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7042 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7042 - Copy.JPG" alt="DSC_7042 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7068 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7068 - Copy.JPG" alt="DSC_7068 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7091 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7091 - Copy.JPG" alt="DSC_7091 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7107 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7107 - Copy.JPG" alt="DSC_7107 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7112 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7112 - Copy.JPG" alt="DSC_7112 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7148 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7148 - Copy.jpg" alt="DSC_7148 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7167 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7167 - Copy.JPG" alt="DSC_7167 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7172 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7172 - Copy.JPG" alt="DSC_7172 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7178 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7178 - Copy.JPG" alt="DSC_7178 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7188 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7188 - Copy.JPG" alt="DSC_7188 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7205 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7205 - Copy.JPG" alt="DSC_7205 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7222 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7222 - Copy.JPG" alt="DSC_7222 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7323 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7323 - Copy.JPG" alt="DSC_7323 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7343 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7343 - Copy.JPG" alt="DSC_7343 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7344 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7344 - Copy.JPG" alt="DSC_7344 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7395 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7395 - Copy.JPG" alt="DSC_7395 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7408 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7408 - Copy.JPG" alt="DSC_7408 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7525 - Copy - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7525 - Copy - Copy.jpg" alt="DSC_7525 - Copy - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7525 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7525 - Copy.JPG" alt="DSC_7525 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7568 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7568 - Copy.JPG" alt="DSC_7568 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7598 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7598 - Copy.JPG" alt="DSC_7598 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7617 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7617 - Copy.JPG" alt="DSC_7617 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7677 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7677 - Copy.jpg" alt="DSC_7677 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7915 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7915 - Copy.JPG" alt="DSC_7915 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_7997 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_7997 - Copy.JPG" alt="DSC_7997 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8012 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8012 - Copy.JPG" alt="DSC_8012 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8017 - Copy - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8017 - Copy - Copy.jpg" alt="DSC_8017 - Copy - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8017 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8017 - Copy.JPG" alt="DSC_8017 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8023 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8023 - Copy.JPG" alt="DSC_8023 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8039 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8039 - Copy.JPG" alt="DSC_8039 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8041 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8041 - Copy.JPG" alt="DSC_8041 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8050 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8050 - Copy.JPG" alt="DSC_8050 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8071 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8071 - Copy.JPG" alt="DSC_8071 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8084 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8084 - Copy.JPG" alt="DSC_8084 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8112 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8112 - Copy.JPG" alt="DSC_8112 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8121 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8121 - Copy.JPG" alt="DSC_8121 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8130 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8130 - Copy.JPG" alt="DSC_8130 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8137 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8137 - Copy.JPG" alt="DSC_8137 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8168 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8168 - Copy.JPG" alt="DSC_8168 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8201 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8201 - Copy.JPG" alt="DSC_8201 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8212 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8212 - Copy.JPG" alt="DSC_8212 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8228 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8228 - Copy.JPG" alt="DSC_8228 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8249 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8249 - Copy.JPG" alt="DSC_8249 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8283 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8283 - Copy.JPG" alt="DSC_8283 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8292 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8292 - Copy.JPG" alt="DSC_8292 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8296 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8296 - Copy.JPG" alt="DSC_8296 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8300 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8300 - Copy (2).JPG" alt="DSC_8300 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8300 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8300 - Copy.JPG" alt="DSC_8300 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item tall">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8301 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8301 - Copy.jpg" alt="DSC_8301 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8520 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8520 - Copy (2).JPG" alt="DSC_8520 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8520 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8520 - Copy.JPG" alt="DSC_8520 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8528 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8528 - Copy (2).JPG" alt="DSC_8528 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8528 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8528 - Copy.JPG" alt="DSC_8528 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8540 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8540 - Copy (2).JPG" alt="DSC_8540 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8540 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8540 - Copy.JPG" alt="DSC_8540 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8569 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8569 - Copy (2).JPG" alt="DSC_8569 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8569 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8569 - Copy.JPG" alt="DSC_8569 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8646 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8646 - Copy (2).JPG" alt="DSC_8646 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8646 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8646 - Copy.JPG" alt="DSC_8646 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8687 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8687 - Copy (2).JPG" alt="DSC_8687 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8687 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8687 - Copy.JPG" alt="DSC_8687 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8696 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8696 - Copy (2).JPG" alt="DSC_8696 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8696 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8696 - Copy.JPG" alt="DSC_8696 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8724 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8724 - Copy (2).JPG" alt="DSC_8724 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8724 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8724 - Copy.JPG" alt="DSC_8724 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8730 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8730 - Copy (2).JPG" alt="DSC_8730 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8730 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8730 - Copy.JPG" alt="DSC_8730 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8737 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8737 - Copy (2).JPG" alt="DSC_8737 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8737 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8737 - Copy.JPG" alt="DSC_8737 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8745 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8745 - Copy (2).JPG" alt="DSC_8745 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8745 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8745 - Copy.JPG" alt="DSC_8745 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8772 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8772 - Copy (2).JPG" alt="DSC_8772 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8772 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8772 - Copy.JPG" alt="DSC_8772 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8787 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8787 - Copy (2).JPG" alt="DSC_8787 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8787 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8787 - Copy.JPG" alt="DSC_8787 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8801 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8801 - Copy (2).JPG" alt="DSC_8801 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8801 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8801 - Copy.jpg" alt="DSC_8801 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8823 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8823 - Copy (2).JPG" alt="DSC_8823 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8823 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8823 - Copy.JPG" alt="DSC_8823 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8866 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8866 - Copy (2).JPG" alt="DSC_8866 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8866 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8866 - Copy.JPG" alt="DSC_8866 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8872 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8872 - Copy (2).JPG" alt="DSC_8872 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8872 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8872 - Copy.JPG" alt="DSC_8872 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8890 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8890 - Copy (2).JPG" alt="DSC_8890 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8890 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8890 - Copy.JPG" alt="DSC_8890 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8921 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8921 - Copy (2).JPG" alt="DSC_8921 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8921 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8921 - Copy.JPG" alt="DSC_8921 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8932 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8932 - Copy (2).JPG" alt="DSC_8932 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8932 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8932 - Copy.JPG" alt="DSC_8932 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8943 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8943 - Copy (2).JPG" alt="DSC_8943 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8943 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8943 - Copy.JPG" alt="DSC_8943 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8953 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8953 - Copy (2).JPG" alt="DSC_8953 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8953 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8953 - Copy.JPG" alt="DSC_8953 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8965 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8965 - Copy (2).JPG" alt="DSC_8965 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8965 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8965 - Copy.JPG" alt="DSC_8965 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8970 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8970 - Copy (2).JPG" alt="DSC_8970 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_8970 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_8970 - Copy.JPG" alt="DSC_8970 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9002 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9002 - Copy (2).JPG" alt="DSC_9002 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9002 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9002 - Copy.JPG" alt="DSC_9002 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9043 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9043 - Copy (2).JPG" alt="DSC_9043 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9043 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9043 - Copy.JPG" alt="DSC_9043 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9050 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9050 - Copy (2).JPG" alt="DSC_9050 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9050 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9050 - Copy.JPG" alt="DSC_9050 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9060 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9060 - Copy (2).JPG" alt="DSC_9060 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9060 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9060 - Copy.JPG" alt="DSC_9060 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9204 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9204 - Copy (2).JPG" alt="DSC_9204 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9204 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9204 - Copy.JPG" alt="DSC_9204 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9209 - Copy (2).jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9209 - Copy (2).jpg" alt="DSC_9209 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9209 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9209 - Copy.JPG" alt="DSC_9209 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9222 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9222 - Copy (2).JPG" alt="DSC_9222 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9222 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9222 - Copy.JPG" alt="DSC_9222 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9261 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9261 - Copy (2).JPG" alt="DSC_9261 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9261 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9261 - Copy.JPG" alt="DSC_9261 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9312 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9312 - Copy (2).JPG" alt="DSC_9312 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9312 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9312 - Copy.JPG" alt="DSC_9312 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9317 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9317 - Copy (2).JPG" alt="DSC_9317 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9317 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9317 - Copy.JPG" alt="DSC_9317 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9423 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9423 - Copy (2).JPG" alt="DSC_9423 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9423 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9423 - Copy.JPG" alt="DSC_9423 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9424 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9424 - Copy (2).JPG" alt="DSC_9424 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9424 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9424 - Copy.JPG" alt="DSC_9424 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9454 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9454 - Copy (2).JPG" alt="DSC_9454 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9454 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9454 - Copy.JPG" alt="DSC_9454 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9455 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9455 - Copy (2).JPG" alt="DSC_9455 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9455 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9455 - Copy.JPG" alt="DSC_9455 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9456 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9456 - Copy (2).JPG" alt="DSC_9456 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9456 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9456 - Copy.JPG" alt="DSC_9456 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9464 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9464 - Copy (2).JPG" alt="DSC_9464 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9464 - Copy.JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9464 - Copy.JPG" alt="DSC_9464 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9466 - Copy (2).JPG">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9466 - Copy (2).JPG" alt="DSC_9466 - Copy (2)" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <div class="gallery-item large">
+                <input type="checkbox" class="checkbox" data-img="Q:\Selection\Voitures\IMOLA/DSC_9466 - Copy.jpg">
+                <img data-src="Q:\Selection\Voitures\IMOLA/DSC_9466 - Copy.jpg" alt="DSC_9466 - Copy" decoding="async" class="lazy-load" loading="lazy">
+            </div>
+            <!-- Add more photos as needed -->
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for Select All and Download Selected functionality
+        const selectAllBtn = document.getElementById('selectAll');
+        const downloadBtn = document.getElementById('downloadSelected');
+        const checkboxes = document.querySelectorAll('.checkbox');
+
+        selectAllBtn.addEventListener('click', () => {
+            checkboxes.forEach(checkbox => checkbox.checked = true);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const selectedPhotos = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+
+            if (selectedPhotos.length === 0) {
+                alert('No photos selected for download.');
+                return;
+            }
+
+            selectedPhotos.forEach(photo => {
+                const link = document.createElement('a');
+                link.href = photo;
+                link.download = photo;
+                link.click();
+            });
+        });
+    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Contact: Yann Peillat | Email: yann.peillat@gmail.com | Phone: +33 (0) 6 41 38 92 80 | <a href="https://instagram.com/yannpeillat/">Instagram</a></p>
+            <p>&copy; 2024 YPPhotography. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Intersection Observer for lazy loading and fade-in effect
+        const images = document.querySelectorAll('.gallery img');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start loading the image only when it's about to come into view
+                    const image = entry.target;
+                    const imgSrc = image.getAttribute('data-src');
+
+                    if (imgSrc) {
+                        image.src = imgSrc; // Set the src attribute to load the image
+                        image.classList.add('loaded'); // Apply the 'loaded' class for opacity transition
+                        image.removeAttribute('data-src'); // Remove data-src to avoid loading again
+                    }
+                    observer.unobserve(image); // Stop observing once it's loaded
+                }
+            });
+        }, {
+            rootMargin: '500px 0px', // Trigger when 50px away from the viewport
+            threshold: 0.001 // Trigger when 0.1% of the image is visible
+        });
+
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    </script>
+
+</body>
+</html>

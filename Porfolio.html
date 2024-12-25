@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YPPhotography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great Vibes">
+
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 2;
+            color: #fff;
+            background-color: #181818;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3.5rem;
+            position: absolute;
+            top: 0;
+            width: 92%;
+            z-index: 10;
+            color: #fff;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5rem;
+	    font-size: 1.7rem;
+        }
+
+        .instagram-icon {
+            width: 35px;
+            height: 35px;
+        }
+
+
+        .portfolio {
+            padding: 2rem;
+        }
+
+        .portfolio h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .mosaic {
+	    column-count: 3;
+            column-gap: 10px;
+        }
+
+        .mosaic img {
+            width: 100%;
+            height: auto;
+    	    object-fit: cover; 
+            border-radius: 5px;
+	    display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+	    margin-bottom: 10px;
+        }
+
+        .mosaic img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">YPPhotography</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="Portfolio.html">Portfolio</a></li>
+                <li><a href="https://instagram.com/yannpeillat/"><img src="instagram-logo.png" alt="Instagram" class="instagram-icon"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <h1>Portfolio</h1>
+        <div class="mosaic">
+	    <img src="Q:\Selection\Porfolio/DSC_6063.jpg" alt="Photo 1" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC3756.JPG" alt="Photo 2" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_4954.jpg" alt="Photo 3" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_0919.jpg" alt="Photo 4" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_4469.jpg" alt="Photo 5" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_0307.jpg" alt="Photo 6" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4883.JPG" alt="Photo 7" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_4591.jpg" alt="Photo 8" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_6621.jpg" alt="Photo 9" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4608.JPG" alt="Photo 10" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC2803.JPG" alt="Photo 11" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_4466.jpg" alt="Photo 12" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4848.JPG" alt="Photo 13" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4316.JPG" alt="Photo 14" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC3821.JPG" alt="Photo 15" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/IMG_2110.jpg" alt="Photo 16" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_1986.jpg" alt="Photo 17" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_3907.jpg" alt="Photo 18" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/IMG_0316.jpg" alt="Photo 19" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4562.JPG" alt="Photo 20" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_3502.jpg" alt="Photo 21" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_1505.jpg" alt="Photo 22" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_0916.jpg" alt="Photo 23" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4474.JPG" alt="Photo 24" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/IMG_0103.jpg" alt="Photo 25" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4600.JPG" alt="Photo 26" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC3413.JPG" alt="Photo 27" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_3449.jpg" alt="Photo 28" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_3906.jpg" alt="Photo 29" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_3204.jpg" alt="Photo 30" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_0729.jpg" alt="Photo 31" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_6841.jpg" alt="Photo 32" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_9209.jpg" alt="Photo 33" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_0747.jpg" alt="Photo 34" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_2279.jpg" alt="Photo 35" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4729.JPG" alt="Photo 36" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_8301.jpg" alt="Photo 37" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_1841.jpg" alt="Photo 38" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC5188.JPG" alt="Photo 39" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC3980.JPG" alt="Photo 40" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC2536.JPG" alt="Photo 41" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC2553.JPG" alt="Photo 42" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_4714.jpg" alt="Photo 43" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4650.JPG" alt="Photo 44" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC3741.JPG" alt="Photo 45" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC4797.JPG" alt="Photo 46" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/IMG_0081.jpg" alt="Photo 47" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_1477.jpg" alt="Photo 48" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/DSC_0244.jpg" alt="Photo 49" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC2599.jpg" alt="Photo 49" decoding="async" class="lazy-load" loading="lazy">
+            <img src="Q:\Selection\Porfolio/_DSC2600.jpg" alt="Photo 49" decoding="async" class="lazy-load" loading="lazy">
+
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Contact: Yann Peillat | Email: yann.peillat@gmail.com | Phone: +33 (0) 6 41 38 92 80 | <a href="https://instagram.com/yannpeillat/">Instagram</a></p>
+            <p>&copy; 2024 YPPhotography. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Intersection Observer for lazy loading and fade-in effect
+        const images = document.querySelectorAll('.gallery img');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start loading the image only when it's about to come into view
+                    const image = entry.target;
+                    const imgSrc = image.getAttribute('data-src');
+
+                    if (imgSrc) {
+                        image.src = imgSrc; // Set the src attribute to load the image
+                        image.classList.add('loaded'); // Apply the 'loaded' class for opacity transition
+                        image.removeAttribute('data-src'); // Remove data-src to avoid loading again
+                    }
+                    observer.unobserve(image); // Stop observing once it's loaded
+                }
+            });
+        }, {
+            rootMargin: '500px 0px', // Trigger when 50px away from the viewport
+            threshold: 0.001 // Trigger when 0.1% of the image is visible
+        });
+
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    </script>
+</body>
+</html>
